@@ -78,27 +78,29 @@ of it requires `Workflow` itself to have been invoked yet.
 
 ## Next planned step
 
-All 12 categories now have content (11/12 fully, `reference` at 11/12 zero-LLM items with the
-Artifacts list still open). What's left:
+All 12 categories now have real content, and both follow-up items from the previous round are
+done — see the 2026-08-23 round-3 log entry below (`faq.md` re-pass, Artifacts reference list).
+Corpus is now 95 files. What's left:
 
-1. **`faq.md` needs a real re-pass** — see session log, it's still close-to-verbatim in its
-   remaining ~30 sections despite the marketing-section strip. Best done as its own small Workflow/
-   agent job with an explicit "compress and flag outdated content" instruction, not a quick hand-fix.
-2. **Artifacts list** (`11-reference`) — the last zero-LLM candidate, flagged as NOT actually clean
-   (29% prose) — needs a real writer pass instead of `extract_reference.py`.
-3. **Decide the 06-into-02 taxonomy fold-in for real** (update `HANDOFF.md` §4) — still only a
+1. **Verify `09-achievements` (done, see round 3 log)** — confirmed solid: 188 unique achievements
+   across 10 files matching the wiki's own stated total, zero duplicates, all links resolve.
+2. **Decide the 06-into-02 taxonomy fold-in for real** (update `HANDOFF.md` §4) — still only a
    flagged note in `_tooling/workitems/README.md`, never formally applied.
-4. **`01-character-mechanics/traits-overview.md`** covers all of Traits in one file — the original
-   work-item note guessed it would need splitting into several; it didn't, per a spot-check. Revisit
-   only if it turns out too large in practice for the skill's retrieval needs.
-5. Once content is believed complete: run `check_corpus.py` one more time, then move to HANDOFF §7
-   step 5 — cross-link scan (partially covered by check_corpus.py already), `README.md`/`INDEX.md`
-   with routing hints, copy into `skill/ck3-companion/references/`, eval pass via `skill-creator`,
-   description-optimization loop, package via `scripts.package_skill`.
+3. **`01-character-mechanics/artifacts.md` has several placeholder sections now backfilled
+   elsewhere** — Talismans, Paizas, Cranial trophies, Dynasty banners, Mummification, and
+   Improving-artifacts all got their real tables written into the new
+   `11-reference/artifacts-list.md` instead (the mechanics file's own placeholder text technically
+   still says "not covered on the wiki" for some of these — worth a small follow-up pass to update
+   those placeholders to point at the new reference file, not urgent since the data now exists
+   somewhere in the corpus).
+4. Once content is believed complete: move to HANDOFF §7 step 5 — cross-link scan (already covered
+   by `check_corpus.py`), `README.md`/`INDEX.md` with routing hints, copy into
+   `skill/ck3-companion/references/`, eval pass via `skill-creator`, description-optimization loop,
+   package via `scripts.package_skill`.
 
-`build_workflow_args.py` + `batch-write-category.js` (now supporting per-item `dir` overrides for
-combined/thin-category runs) are proven across 2 rounds and 8 Workflow invocations — safe to reuse
-as-is for future batches (the Artifacts writer pass, a faq.md re-pass, etc.).
+`build_workflow_args.py` + `batch-write-category.js` (per-item `dir` overrides supported) and
+plain `Agent`-dispatched single-file rewrite jobs (used for round 3, since Workflow is overkill for
+1-2 files) are both proven patterns now — reuse whichever fits the batch size.
 
 **2026-08-23, later same session**: user gave the go-ahead and asked for 4 parallel Workflow runs.
 Launched via `batch-write-category.js` (Haiku, batchSize 6) on the 4 categories with the most
@@ -235,6 +237,37 @@ workflow's own aggregated JSON came back empty for that one. Post-batch hygiene 
   separate files correctly.
 
 Post-fix state: `check_corpus.py` clean (94 files, no broken links, no manifest issues, no empty
+tags).
+
+### 2026-08-23, round 3 — faq.md re-pass, Artifacts reference list, achievements audit
+
+User asked to properly fix the two follow-ups from round 2 and independently verify the
+achievements category. Verified achievements first (see item 1 in "Next planned step" above —
+confirmed solid). For the two rewrites, used plain `Agent` dispatches (not `Workflow` — one file
+each, multi-agent orchestration would be overkill) with full context and explicit instructions:
+
+- **`faq.md`**: re-fetched fresh, rewrote from the existing 30 topic sections (kept the marketing-
+  strip from round 2's hand-fix). 121,829 → 37,151 bytes. Dropped 2 pure-trivia sections (Videos,
+  Press & Reviews). Flagged 5 sections `⚠️` as likely outdated based on real CK3 knowledge — e.g.
+  Schemes/Secrets/Hooks (the whole intrigue system was reworked post-launch), Lifestyles ("no
+  supernatural content" — contradicted by Fate of Iberia's sorcery), Governments ("Republics don't
+  fit CK3" — Republic government shipped via Roads to Power), Cultures (superseded by the
+  Traditions/Pillars rework). Left a few softer flags inline where it couldn't verify either way
+  (dynamic investiture, in-council tenet changes) rather than guessing — matches the instruction to
+  err toward keeping-with-a-note over dropping or asserting.
+- **`11-reference/artifacts-list.md`** (new, 39,342 bytes): the actual named-artifact catalog — 21
+  realm-starting artifacts, 11 Byzantine, 4 Holy Roman, 6 Shia, 6 Pagan Kingdom, 4 Hegemony of
+  China, Swords of El Cid, Bells of Santiago, The Double-Moon Tome, 39 Adventure artifacts, 50
+  religion-restricted Holy relics, 12 Easter-egg artifacts. Confirmed no duplication against
+  `01-character-mechanics/artifacts.md`'s mechanics sections (rarity, creation, hunt trophies,
+  inspirations) — skipped those, cross-linked back instead. **Found a real gap while there**:
+  several of that file's sections (Talismans, Paizas, Cranial trophies, Dynasty banners,
+  Mummification, Improving artifacts) were vague placeholders — Talismans literally said "_Specific
+  mechanics not covered on the wiki._" — even though the wiki page has exact tables for all of
+  them. Since the fetch was already happening, the agent captured those real tables into a new
+  "Templated artifacts by rarity" section rather than leave that data missing from the corpus.
+
+Post-fix state: `check_corpus.py` clean (95 files, no broken links, no manifest issues, no empty
 tags).
 
 ---
