@@ -109,22 +109,31 @@ whether it's already grouped by DLC before deciding on a per-DLC-file split like
 closest CK3 equivalent of HOI4's `01-mechanics`).
 
 Revised category list (numbering still gappy/renumberable on purpose). For which of these have
-actually been built out, see `LEDGER.md`:
+actually been built out, see `LEDGER.md`.
+
+**Taxonomy correction, applied 2026-08-23**: the original hypothesis had a separate
+`06-court-and-council` category. Dropped — the wiki's own navbox groups Council/Court with the
+rest of Realm & Governance (see `Mechanics` hub page, cached at
+`wiki-crawler/corpus/_tooling/mechanics-hub-master-raw.md`), and there's no source-side content
+split that would justify keeping them apart. Council and Court live in `02-realm-and-succession`.
+Numbers 07 onward were **not** renumbered down to fill the gap — corpus directories already exist
+under the original numbers (`07-rulers-and-dynasties`, `08-decisions-and-activities`, etc.) and
+renumbering after content exists isn't worth the churn.
 
 | # | Category | Confirmed content |
 |---|---|---|
-| 00 | `meta` | DLC index, patch history (**summarized, not all 39 pages**), Jargon glossary, FAQ/QNA, Bookmarks |
-| 01 | `character-mechanics` | Attributes, Traits (huge, needs splitting), Lifestyle, Interactions, Nickname, Form of address, Family, Dynasty, Culture, Traditions, Ruler Designer, Prisoner, Hooks, Travel, Resources, Modifiers, Artifacts, Knight |
-| 02 | `realm-and-succession` | Titles (Barony/County/Duchy/Kingdom/Empire), Council, Domicile, Government (16 types), Great projects, Power sharing, Royal court, Situation, Stories, Struggles, Subjects, Succession, Laws |
-| 03 | `religion-and-culture` | Faiths (Abrahamic/Dharmic/Pagan/Sinitic), Doctrines, Tenet, Holy sites, Holy war, Culture, Innovation, Traditions |
-| 04 | `intrigue-and-diplomacy` | Schemes, Alliance, diplomacy-flavored Interactions |
-| 05 | `warfare` | Army, Casus belli, Hired forces, Warfare, Duel, men-at-arms, sieges, levies |
-| 06 | `court-and-council` | Court, Council, court/council positions |
-| 07 | `rulers-and-dynasties` | Interesting characters, Bookmarks, dynasty legacies |
-| 08 | `decisions-and-activities` | Adventurer/Character/Ruler decisions, Activity |
-| 09 | `achievements` | Per-DLC-group files + index, from the single `Achievement` page (188 total) |
-| 10 | `strategy` | `**Inferred:**` synthesis; maybe 1-line pointers into the 2 Walkthroughs rather than full files |
-| 11 | `reference` | Traits list, Buildings list (9 sub-lists), Innovations list, Artifacts list — prime zero-LLM scripted candidates, see §5.5 |
+| 00 | `meta` | DLC index, patch history (summarized, not all 39 pages), Jargon glossary, FAQ/QNA, Bookmarks/game rules |
+| 01 | `character-mechanics` | Attributes, Traits, Lifestyle, Interactions, Family, Dynasty, Ruler Designer, Prisoner, Hooks, Travel, Resources, Modifiers, Artifacts (mechanics), Activities |
+| 02 | `realm-and-succession` | Titles (Barony/County/Duchy/Kingdom/Empire), **Council, Court** (folded in from the dropped 06), Domicile, Government (16 types), Great projects, Power sharing, Royal court, Situation, Stories, Struggles, Subjects, Succession, Laws |
+| 03 | `religion-and-culture` | Faiths (Abrahamic/Dharmic/Pagan/Sinitic), Doctrines, Tenet, Holy sites, Holy war, Culture, Innovation, Traditions, Form of Address |
+| 04 | `intrigue-and-diplomacy` | Schemes, Alliance — genuinely thin; Faction/Secret/Marriage content folds into Subjects/Hooks/Interactions in other categories rather than having dedicated pages |
+| 05 | `warfare` | Army, Casus belli, Hired forces, Warfare, Duel, Knights |
+| ~~06~~ | ~~`court-and-council`~~ | **dropped, folded into 02** — see correction above |
+| 07 | `rulers-and-dynasties` | Bookmarks, curated Interesting-characters highlights (source page is 334 KB — see §3-style granularity warning, don't reproduce in full) |
+| 08 | `decisions-and-activities` | Decisions hub, Adventurer/Character/Ruler decisions |
+| 09 | `achievements` | Per-DLC-group files + index, from the single `Achievement` page (188 total, confirmed exact match) |
+| 10 | `strategy` | Beginner's guide; the 2 known Walkthroughs stay excluded (low compression value), cross-referenced by name only |
+| 11 | `reference` | Building lists (9 sub-lists), Innovations list, Artifacts catalog, List of kingdoms/empires — zero-LLM scripted where the source page was clean tables (§5.5), a real writer pass where it wasn't (e.g. Artifacts, which was 29% prose) |
 
 ---
 
