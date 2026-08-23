@@ -1,0 +1,4 @@
+[
+  { "title": "Schemes", "output": "schemes.md", "notes": "Wiki's own navbox groups this under 'Characters', not a diplomacy/intrigue bucket -- kept here anyway since it's the natural fit for this skill's audience (players asking about scheme mechanics), see workitems/README.md for the general note on this mismatch." },
+  { "title": "Alliance", "output": "alliance.md", "notes": "Also relevant to 05-warfare (alliance war support) -- pick one home, cross-link from the other." }
+]

@@ -1,0 +1,16 @@
+[
+  { "title": "Attributes", "output": "attributes.md" },
+  { "title": "Traits", "output": "traits-overview.md", "notes": "103 KB master page cached at _tooling/traits-master-raw.md. Has real prose per trait category (Personality/Physical/etc.) -- NOT a pure zero-LLM candidate, needs a real writer pass, likely split into a few files by trait category rather than one giant one." },
+  { "title": "Resources", "output": "resources.md", "notes": "Already forward-referenced from government-tribal.md and government-nomadic.md -- write this one early to resolve those cross-links." },
+  { "title": "Modifiers", "output": "modifiers.md" },
+  { "title": "Lifestyle", "output": "lifestyle.md" },
+  { "title": "Family", "output": "family.md" },
+  { "title": "Dynasty", "output": "dynasty.md" },
+  { "title": "Hooks", "output": "hooks.md" },
+  { "title": "Activity", "output": "activities.md", "notes": "Check overlap with 08-decisions-and-activities before writing -- may belong there instead." },
+  { "title": "Artifacts", "output": "artifacts.md", "notes": "86 KB, 29% prose by line count (see tabularity check) -- table portion could use zero-LLM extraction, prose portion needs a writer pass. Consider splitting into artifacts-overview.md (written) + a reference-category zero-LLM artifacts list." },
+  { "title": "Interactions", "output": "interactions.md", "notes": "General character-interaction mechanics page -- diplomacy/intrigue-specific interactions may belong in 04 instead; check for duplication." },
+  { "title": "Travel", "output": "travel.md" },
+  { "title": "Prisoner", "output": "prisoners.md" },
+  { "title": "Ruler Designer", "output": "ruler-designer.md" }
+]

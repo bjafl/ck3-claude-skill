@@ -1,0 +1,8 @@
+[
+  { "title": "Downloadable content", "output": "dlc-overview.md", "notes": "General DLC hub page; per-DLC list already confirmed (17) in HANDOFF.md §3." },
+  { "title": "Jargon", "output": "jargon.md", "notes": "Glossary -- check tabularity first, may qualify for zero-LLM extraction like buildings/lists did." },
+  { "title": "FAQ", "output": "faq.md" },
+  { "title": "QNA", "output": "qna.md", "notes": "Check overlap with FAQ before writing both -- may fold into one file." },
+  { "title": "Game rules", "output": "game-rules.md" },
+  { "title": "Patches", "output": "patch-history.md", "notes": "DO NOT crawl all 39 Category:Patches pages -- needs an LLM to synthesize a condensed history of major mechanic changes, not a per-patch changelog dump. Genuinely needs writer judgment, not zero-LLM." }
+]

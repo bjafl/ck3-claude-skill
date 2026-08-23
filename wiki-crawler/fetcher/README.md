@@ -1,7 +1,7 @@
 # ck3-wiki-crawler
 
 Playwright-driven fetcher for `ck3.paradoxwikis.com`. Adapted from the
-`hoi-claude-skill` project's `hoi_wiki_crawler` — see `../../HANDOFF.md` at
+`hoi4-claude-skill` project's `hoi_wiki_crawler` — see `../../HANDOFF.md` at
 the repo root for full context on why this exists and how it was used there.
 
 ## Why not just `requests`/`pymediawiki`?

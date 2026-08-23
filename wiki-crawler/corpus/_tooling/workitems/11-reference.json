@@ -1,0 +1,14 @@
+[
+  { "title": "Castle buildings", "output": "buildings-castle.md", "notes": "DONE via extract_reference.py -- see manifest.tsv." },
+  { "title": "Economic buildings", "output": "buildings-economic.md", "notes": "DONE via extract_reference.py." },
+  { "title": "List of kingdoms", "output": "list-of-kingdoms.md", "notes": "DONE via extract_reference.py." },
+  { "title": "List of empires", "output": "list-of-empires.md", "notes": "DONE via extract_reference.py." },
+  { "title": "Military buildings", "output": "buildings-military.md", "notes": "Not yet run -- check tabularity first like the others were, but pattern strongly suggests it'll match." },
+  { "title": "Special buildings", "output": "buildings-special.md" },
+  { "title": "Temple buildings", "output": "buildings-temple.md" },
+  { "title": "Temple Citadel buildings", "output": "buildings-temple-citadel.md" },
+  { "title": "Tribe buildings", "output": "buildings-tribe.md" },
+  { "title": "County buildings", "output": "buildings-county.md" },
+  { "title": "Duchy buildings", "output": "buildings-duchy.md" },
+  { "title": "Artifact", "output": "artifacts-list.md", "notes": "86 KB, ~29% prose -- NOT a clean zero-LLM candidate like the buildings pages. If used here, needs the prose sections stripped by a writer pass first, or accept the mechanical extract will carry more unwanted prose than the buildings files did." }
+]

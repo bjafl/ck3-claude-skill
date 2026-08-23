@@ -1,0 +1,20 @@
+[
+  { "title": "Council", "output": "council.md", "notes": "Was slated for a separate 06-court-and-council category in HANDOFF §4 -- wiki groups it here instead, see workitems/README.md." },
+  { "title": "Court", "output": "court.md", "notes": "Same fold-in-from-06 note as Council." },
+  { "title": "Power sharing", "output": "power-sharing.md" },
+  { "title": "Subjects", "output": "subjects.md", "notes": "Already forward-referenced from government-feudal.md (§ Feudal contracts) -- write this early to resolve that cross-link." },
+  { "title": "Succession", "output": "succession.md" },
+  { "title": "Laws", "output": "laws-overview.md" },
+  { "title": "Authority laws", "output": "authority-laws.md" },
+  { "title": "Succession laws", "output": "succession-laws.md" },
+  { "title": "Titles", "output": "titles.md" },
+  { "title": "Barony", "output": "barony.md" },
+  { "title": "County", "output": "county.md" },
+  { "title": "Building", "output": "buildings-overview.md", "notes": "General mechanics page -- distinct from the per-type building lists which live in 11-reference (zero-LLM, 4/9 already done)." },
+  { "title": "Royal court", "output": "royal-court.md", "notes": "Requires Royal Court DLC -- mark dlc: [Royal Court] in front matter." },
+  { "title": "Domicile", "output": "domiciles-overview.md", "notes": "Distinct from the per-type domicile pages (Administrative estate, Camp, Celestial estate, Manor, Nomadic capital) which may deserve their own short files or a fold-in here -- decide when writing." },
+  { "title": "Great projects", "output": "great-projects.md" },
+  { "title": "Situation", "output": "situations.md" },
+  { "title": "Stories", "output": "stories.md" },
+  { "title": "Struggles", "output": "struggles.md" }
+]

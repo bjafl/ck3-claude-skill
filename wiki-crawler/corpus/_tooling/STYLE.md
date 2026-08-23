@@ -1,6 +1,6 @@
 # Knowledge-base authoring rules (all writers follow these)
 
-Adapted from the hoi-claude-skill project's STYLE.md — same structure, ported to CK3. See
+Adapted from the hoi4-claude-skill project's STYLE.md — same structure, ported to CK3. See
 `../../../HANDOFF.md` for why these rules exist and what worked/didn't in the HOI4 build.
 
 The audience is **an LLM agent** that will be asked things like "I'm playing a count in the HRE,

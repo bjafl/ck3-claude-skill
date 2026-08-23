@@ -1,0 +1,16 @@
+[
+  { "title": "Culture", "output": "culture.md" },
+  { "title": "Faith", "output": "faith.md" },
+  { "title": "Doctrines", "output": "doctrines.md" },
+  { "title": "Tenet", "output": "tenets.md" },
+  { "title": "Holy sites", "output": "holy-sites.md" },
+  { "title": "Holy war", "output": "holy-war.md" },
+  { "title": "Great holy war weights", "output": "great-holy-war-weights.md", "notes": "Small/niche -- consider folding into holy-war.md instead of a separate file." },
+  { "title": "Abrahamic faiths", "output": "abrahamic-faiths.md" },
+  { "title": "Dharmic faiths", "output": "dharmic-faiths.md" },
+  { "title": "Pagan faiths", "output": "pagan-faiths.md" },
+  { "title": "Sinitic faiths", "output": "sinitic-faiths.md" },
+  { "title": "Traditions", "output": "traditions.md" },
+  { "title": "Innovation", "output": "innovations-overview.md", "notes": "50 KB master page cached at _tooling/innovations-master-raw.md -- has real mechanics prose, write the overview by hand; the per-innovation list table may separately qualify for zero-LLM extraction into 11-reference." },
+  { "title": "Form of Address", "output": "form-of-address.md" }
+]

@@ -1,42 +1,41 @@
 # CK3 Companion Skill — Handoff
 
-Sibling project to `../hoi-claude-skill`, which built a Claude skill for Hearts of Iron IV using a
+Sibling project to `../hoi4-claude-skill`, which built a Claude skill for Hearts of Iron IV using a
 scrape → distill → condense → package pipeline. This project applies the same proven methodology to
 Crusader Kings III, with specific improvements to cut the token cost of the crawl/distill phase,
 which ran noticeably heavier than it needed to on the HOI4 build.
 
 **Read this whole document before starting.** It's written so a fresh agent with no other context
-can pick up the work and make good decisions immediately, not just follow steps blindly.
+can pick up the work and make good decisions immediately, not just follow steps blindly. This file
+holds background, design rationale, and methodology — it's meant to stay stable. For **current
+status, what's done, and what's planned next, see `LEDGER.md`** instead; that file is the living
+tracker and changes every session.
 
 ---
 
-## 1. What's already done in this project
+## 1. What this project starts with
 
 - `wiki-crawler/fetcher/` — a working Playwright-based crawler, ported from HOI4's `hoi_wiki_crawler`
-  and renamed to `ck3_wiki_crawler`. **Verified working today**: headless Chromium passes
-  `ck3.paradoxwikis.com`'s Fastly "Client Challenge" exactly like it does on the HOI4 wiki (same
-  hosting platform), confirmed by loading `WIKI_ENTRY_URL` and getting a real page title ("CK3
-  Wiki"), not the challenge page. `uv sync` + import both work. No separate `playwright install`
-  needed — the Chromium binary cache is shared across projects at `~/.cache/ms-playwright`, not
-  per-venv, and it was already installed while building the HOI4 project.
+  and renamed to `ck3_wiki_crawler`. Headless Chromium passes `ck3.paradoxwikis.com`'s Fastly "Client
+  Challenge" exactly like it does on the HOI4 wiki (same hosting platform) — confirmed by loading
+  `WIKI_ENTRY_URL` and getting a real page title ("CK3 Wiki"), not the challenge page. `uv sync` +
+  import both work. No separate `playwright install` needed — the Chromium binary cache is shared
+  across projects at `~/.cache/ms-playwright`, not per-venv, and it was already installed while
+  building the HOI4 project.
 - `wiki-crawler/corpus/_tooling/STYLE.md` — ported and adapted from HOI4's version. Same authoring
   rules (front matter schema, number-fidelity, condensing, cross-linking), CK3-specific examples
-  swapped in. **Not yet finalized** — see §4, the category/naming sections have open TODOs pending
-  the taxonomy decision.
+  swapped in.
 - `.gitignore` copied (covers `.venv/`, `__pycache__/`).
-- Quick recon done (see §3) confirming `Category:DLC` exists with the same naming convention as
-  HOI4's wiki, and roughly what patch versions exist.
 
-**Not started**: `wiki-crawler/corpus/`'s actual content (only `_tooling/` exists), `skill/`
-(completely empty), git init/commit for this project.
+See `LEDGER.md` for what's been built on top of this since (corpus content, category progress).
 
 ---
 
-## 2. Why this project exists as a separate repo, not a folder in hoi-claude-skill
+## 2. Why this project exists as a separate repo, not a folder in hoi4-claude-skill
 
 Decided when starting this: the crawler *tool* is the only genuinely reusable part (confirmed by
 how easily it ported — rename the package, swap one URL, done). The corpus and skill content are
-100% game-specific and share nothing. `hoi-claude-skill` as a repo name doesn't fit a second
+100% game-specific and share nothing. `hoi4-claude-skill` as a repo name doesn't fit a second
 unrelated game either. If a third Paradox game skill gets built later, consider whether a genuinely
 shared crawler *package* (published once, imported by each game's project) is worth the overhead at
 that point — for two games it wasn't.
@@ -56,41 +55,76 @@ Royal Court (DLC), Silk & Silver, Tours and Tournaments, Wandering Nobles, Wards
 (plus the general `Downloadable content` overview page — 17 total, matching HOI4's pattern almost
 exactly).
 
-Highest patch number surfaced by a `search_titles("patch notes")` call: **Patch 1.19.X** — treat
-this as a lower bound, not a confirmed "current version." Confirm the actual current patch before
-starting real content work (check the wiki's own homepage or a `Patches` hub page), and use that
-number as `game_version` in every file's front matter, matching the convention STYLE.md documents.
+Current patch (confirmed via the homepage's "Game history" section, check it again if a lot of time
+has passed since this was written): **1.19** (latest micro-patch 1.19.0.6, released 2026-05-25). By
+God Alone is an announced-but-unreleased DLC (2026-09-30) — don't write content for it yet, and don't
+count it in DLC totals. Use `game_version: "1.19"` in front matter until this changes.
 
-**Not yet explored**: the wiki's actual category taxonomy for game mechanics content (the
-equivalent of HOI4's `Category:National focus trees`). Do this — via `search_titles`/
-`category_members`, same tools used above — before finalizing §4's category structure.
+§4 below has the confirmed real category taxonomy (replacing the original hypothesis). Two gotchas
+found along the way, both important for every future batch:
+
+1. **The wiki hosts several total-conversion mods as regular content**, not just the vanilla game:
+   `CK3AGOT`, `RICE`, `Rajas of Asia`, `The Fallen Eagle`, `Realms in Exile`, `Lotr:RiE`, `Way of
+   Kings`, `When the World Stopped Making Sense`, `DATAW`, `WCGOA` all showed up as top-level
+   categories in a full `allcategories` dump. **Never fetch/write content from these** — this corpus
+   is vanilla CK3 only. If a `search_titles` or `category_members` result includes a page that looks
+   mod-specific (unfamiliar faith/culture/mechanic names, especially fantasy/setting-specific ones),
+   verify it isn't one of these before using it.
+2. **Some "list" pages are enormous generated dumps, not hand-written wiki content** — `List of
+   counties` alone is 689 KB (3,476 individual counties, scripted from game data). This is far too
+   granular for a companion skill and must not be crawled/condensed 1:1. If a category needs county-
+   level detail at all, keep it to a tiny curated/summarized subset (e.g. "notable capitals") rather
+   than reproducing the list. Check page size with a quick `fetch_pages` call before committing a
+   category to using a page like this as a source.
 
 ---
 
-## 4. Draft category taxonomy (hypothesis — verify, don't assume)
+## 4. Category taxonomy — confirmed against the real wiki
 
-This is my best guess based on CK3's actual game systems, by analogy to how HOI4's 10 categories
-were organized around *that* game's systems. It is very likely wrong in the details and should be
-corrected once real wiki exploration happens — CK3 doesn't have "focus trees" or "naval warfare" the
-way HOI4 does; it has character-, dynasty-, and realm-centric systems instead.
+The original hypothesis below turned out mostly right at the theme level but wrong on the details —
+CK3's own `Category:*` structure is flatter and more scattered than HOI4's. Real MediaWiki categories
+found via a full `action=query&list=allcategories` dump plus `category_members` spot-checks on the
+vanilla-relevant ones:
 
-| # | Category | Rough content | HOI4 analog |
-|---|---|---|---|
-| 00 | `meta` | Game overview, DLC index, patch history, glossary, console commands, hotkeys | same |
-| 01 | `character-mechanics` | Traits, stress, lifestyles, education, health/aging, death | `01-mechanics` (partial) |
-| 02 | `realm-and-succession` | Crown authority, council, laws, succession types (partition/primogeniture/elective/etc.), titles, de jure | `01-mechanics` (partial) |
-| 03 | `religion-and-culture` | Faiths, doctrines, piety, holy wars, culture, innovations, hybridization | new — no HOI4 equivalent |
-| 04 | `intrigue-and-diplomacy` | Schemes, secrets, alliances, marriages, factions, vassalization | `01-mechanics` (diplomacy part) + new |
-| 05 | `warfare` | Levies, men-at-arms, combat resolution, sieges, commanders/knights | `02-land-warfare`+`04-naval-warfare` combined (CK3 land warfare only, no separate naval/air the way HOI4 has) |
-| 06 | `court-and-council` | Court positions, councilors, guests, hybrid CK3-specific systems | new |
-| 07 | `rulers-and-dynasties` | Notable bookmark/start characters, dynasties, historical figures | `05-countries` analog |
-| 08 | `decisions-and-activities` | Decisions, activities, major choice trees | `06-focus-trees` analog (structurally different — CK3 doesn't have a tech-tree-shaped focus system) |
-| 09 | `achievements` | Same pattern as HOI4: per-DLC-group files + index | same |
-| 10 | `strategy` | Playstyle guides, synthesis — mostly `**Inferred:**`, low fetch volume | `08-strategy` |
-| 11 | `reference` | Trait list, building list, innovation list, artifact list, etc. — prime candidates for the zero-LLM scripted path, see §5.5 | `09-reference` |
+`Category:Character` (26: Activity, Alliance, Artifacts, Artifact modifiers, Attributes, Court,
+Culture, Dynasty, Family, Form of address, Hooks, Interactions, Interesting characters, Knight,
+Lifestyle, Modifiers, Nickname, Prisoner, Resources, Ruler Designer, Schemes, Traditions, Traits,
+Travel, …), `Category:Realm` (19: Barony, Building, Council, County, Court, Domicile, Government,
+Great projects, Knight, Laws, Power sharing, Prisoner, Royal court, Situation, Stories, Struggles,
+Subjects, Succession, Titles), `Category:Religion` (11: Abrahamic/Dharmic/Pagan/Sinitic faiths,
+Doctrines, Faith, Great holy war weights, Holy sites, Holy war, Tenet), `Category:Governments` (16
+distinct types + hub), `Category:Laws` (Authority laws, Laws, Succession laws), `Category:War`
+(Alliance, Army, Casus belli, Hired forces, Warfare, Duel), `Category:Buildings` (9 sub-lists:
+Castle/County/Duchy/Economic/Military/Special/Temple/Temple Citadel/Tribe buildings),
+`Category:Decisions` (Adventurer/Character/Ruler decisions), `Category:Domiciles` (Administrative
+estate, Camp, Celestial estate, Manor, Nomadic capital), `Category:DLC` (17, matches original recon),
+`Category:Patches` (39 — do **not** crawl all of these, see below), `Category:Lists` (Interesting
+characters, Keyboard shortcuts, List of counties/duchies/kingdoms/empires — see §3's warning on
+`List of counties`), `Category:Guides` (FAQ, **Jargon** = the glossary, QNA, Tutorial videos),
+`Category:Walkthroughs` (2 long narrative let's-plays — low compression value, likely skip or fold
+one line into `strategy`). Separately, big single-page reference/hub content exists outside any
+tidy category: `Traits` (103 KB), `Achievement` (148 KB, 188 achievements in one page — check
+whether it's already grouped by DLC before deciding on a per-DLC-file split like HOI4 used),
+`Innovation` (50 KB), and a `Mechanics` hub page that links out to ~30+ per-topic detail pages (the
+closest CK3 equivalent of HOI4's `01-mechanics`).
 
-Numbering intentionally left gappy/renumberable — finalize the real list only after wiki exploration,
-then lock in the numbering and update this table and STYLE.md's file-naming section together.
+Revised category list (numbering still gappy/renumberable on purpose). For which of these have
+actually been built out, see `LEDGER.md`:
+
+| # | Category | Confirmed content |
+|---|---|---|
+| 00 | `meta` | DLC index, patch history (**summarized, not all 39 pages**), Jargon glossary, FAQ/QNA, Bookmarks |
+| 01 | `character-mechanics` | Attributes, Traits (huge, needs splitting), Lifestyle, Interactions, Nickname, Form of address, Family, Dynasty, Culture, Traditions, Ruler Designer, Prisoner, Hooks, Travel, Resources, Modifiers, Artifacts, Knight |
+| 02 | `realm-and-succession` | Titles (Barony/County/Duchy/Kingdom/Empire), Council, Domicile, Government (16 types), Great projects, Power sharing, Royal court, Situation, Stories, Struggles, Subjects, Succession, Laws |
+| 03 | `religion-and-culture` | Faiths (Abrahamic/Dharmic/Pagan/Sinitic), Doctrines, Tenet, Holy sites, Holy war, Culture, Innovation, Traditions |
+| 04 | `intrigue-and-diplomacy` | Schemes, Alliance, diplomacy-flavored Interactions |
+| 05 | `warfare` | Army, Casus belli, Hired forces, Warfare, Duel, men-at-arms, sieges, levies |
+| 06 | `court-and-council` | Court, Council, court/council positions |
+| 07 | `rulers-and-dynasties` | Interesting characters, Bookmarks, dynasty legacies |
+| 08 | `decisions-and-activities` | Adventurer/Character/Ruler decisions, Activity |
+| 09 | `achievements` | Per-DLC-group files + index, from the single `Achievement` page (188 total) |
+| 10 | `strategy` | `**Inferred:**` synthesis; maybe 1-line pointers into the 2 Walkthroughs rather than full files |
+| 11 | `reference` | Traits list, Buildings list (9 sub-lists), Innovations list, Artifacts list — prime zero-LLM scripted candidates, see §5.5 |
 
 ---
 
@@ -98,7 +132,7 @@ then lock in the numbering and update this table and STYLE.md's file-naming sect
 
 This is the part explicitly asked for. The HOI4 build worked and produced a genuinely good skill
 (validated: 100% vs 33% eval pass rate against a no-skill baseline — see
-`../hoi-claude-skill/skill/hoi4-companion-workspace/iteration-1/benchmark.md` for the numbers), but
+`../hoi4-claude-skill/skill/hoi4-companion-workspace/iteration-1/benchmark.md` for the numbers), but
 the pipeline spent more tokens than it needed to. Here's what to change.
 
 ### 5.1 The fetch step was already free — keep it that way
@@ -147,7 +181,7 @@ the total agent cost. Concretely:
    zero tokens). If a consistent additional cruft pattern shows up during CK3 content review (e.g. a
    specific "External links" heading format, a specific broken-template signature), add it to the JS
    regex/selector list in `fetch.py` rather than telling every future writer agent to notice and
-   strip it by hand. Port improvements back to `hoi-claude-skill`'s `fetch.py` too if they'd help
+   strip it by hand. Port improvements back to `hoi4-claude-skill`'s `fetch.py` too if they'd help
    there (see the comment left in `fetch.py` here).
 
 ### 5.3 What's NOT reducible — don't try to script away prose judgment
@@ -237,30 +271,40 @@ but cuts wall-clock a lot; do this again for any batch bigger than ~15-20 items.
   category, not just once at the very end of the whole build.
 - **`.claude/skills/<name>` should be a symlink into `skill/<name>/`**, not a duplicate copy, once
   this project has an actual skill directory — keeps local Claude Code testing in sync with the
-  canonical location automatically. (`hoi-claude-skill` already does this for its own skill and for
+  canonical location automatically. (`hoi4-claude-skill` already does this for its own skill and for
   an unrelated installed skill — same pattern, safe to reuse.)
 - **Git discipline**: even solo, stage files by explicit name (never `git add -A`/`.`), and check
   `git status --porcelain` before and after staging in case another session is touching the same
-  checkout — see `hoi-claude-skill`'s CLAUDE.md-driven habit of invoking the
+  checkout — see `hoi4-claude-skill`'s CLAUDE.md-driven habit of invoking the
   `concurrent-git-commit-safety` skill before every commit.
 
 ---
 
-## 7. Suggested first steps
+## 7. Suggested workflow, first steps through completion
 
-1. Explore the CK3 wiki's real category structure (`category_members`/`search_titles`, same tools
-   already proven working above) before touching §4's draft taxonomy — confirm or correct it.
-2. Confirm the actual current game patch version (don't rely on the "1.19.X" lower bound from §3).
+1. Explore the CK3 wiki's real category structure (`category_members`/`search_titles`) before
+   touching §4's taxonomy — confirm or correct it. (Already done once — see §4 — but re-verify if
+   picking this up much later, the wiki changes with patches.)
+2. Confirm the actual current game patch version — don't blindly trust §3's snapshot if a lot of
+   time has passed.
 3. Pick one small category and run a **pilot batch of 5-10 files** using the token-minimized
    approach from §5 (inlined rules, batched agents, no example-file read after the first couple) —
-   check output quality before scaling to the full corpus. This is cheap insurance against building
-   250 files on a broken pattern.
+   check output quality before scaling to the full corpus. Cheap insurance against building 250
+   files on a broken pattern. Check `LEDGER.md` first — this may already be done for at least one
+   category.
 4. Once a category's pattern is validated, scale it up the same way HOI4 did: build a work-item
    list (JSON), write one `Workflow` script per category (or a few categories at a time), split into
-   parallel chunks per §5.7, launch, verify, repeat.
+   parallel chunks per §5.7, launch, verify, repeat. **Get explicit user go-ahead before invoking
+   `Workflow`** — multi-agent orchestration needs an explicit opt-in in this harness (the user
+   saying so in their own words, or an "ultracode" trigger), it isn't implied by this handoff
+   document alone.
 5. Follow the same finishing pass HOI4 used at the end: cross-link scan, `README.md`/`INDEX.md`
    with routing hints, copy into `skill/ck3-companion/references/`, eval pass via `skill-creator`,
    description-optimization loop, package via `scripts.package_skill`.
+
+Update `LEDGER.md` as you go — status per category, decisions made, anything a future session
+would otherwise have to rediscover. Keep this file (`HANDOFF.md`) itself stable; only edit it for
+genuine corrections to background facts or methodology, not for status updates.
 
 Good luck — the hard part (proving the crawler works against Paradox's bot protection, and proving
 the whole scrape→skill pipeline actually produces something measurably better than no skill at all)

@@ -1,0 +1,9 @@
+[
+  { "title": "Warfare", "output": "warfare-overview.md" },
+  { "title": "Casus belli", "output": "casus-belli.md" },
+  { "title": "Army", "output": "army.md" },
+  { "title": "Hired forces", "output": "hired-forces.md" },
+  { "title": "Knight", "output": "knights.md", "notes": "Category members list gave 'Knight' (singular); mechanics-hub navbox says 'Knights' -- both should redirect to the same page via redirects=1, but verify the fetched title matches before writing." },
+  { "title": "Duel", "output": "duel.md" },
+  { "title": "Situation", "output": "situations.md", "notes": "Also listed in 02-realm-and-succession.json -- Situations/Struggles may genuinely span both warfare and realm mechanics (e.g. the Fate of Iberia struggle). Pick one home, cross-link from the other rather than duplicating." }
+]
