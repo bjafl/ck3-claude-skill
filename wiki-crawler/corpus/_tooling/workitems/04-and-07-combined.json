@@ -1,0 +1,6 @@
+[
+  { "title": "Schemes", "output": "schemes.md", "dir": "04-intrigue-and-diplomacy", "notes": "Wiki's own navbox groups this under 'Characters', kept here as the natural fit for player questions." },
+  { "title": "Alliance", "output": "alliance.md", "dir": "04-intrigue-and-diplomacy", "notes": "Also relevant to 05-warfare (already has its own alliance mechanics covered indirectly via Casus Belli/Army) -- this is the canonical home." },
+  { "title": "Bookmarks", "output": "bookmarks.md", "dir": "07-rulers-and-dynasties" },
+  { "title": "Interesting characters", "output": "interesting-characters.md", "dir": "07-rulers-and-dynasties", "notes": "SOURCE PAGE IS 334 KB (a per-start-date roster covering all 3 start dates, similar granularity trap to the 'List of counties' problem flagged in HANDOFF.md §3). DO NOT reproduce it in full. Pick roughly 20-30 of the most notable/achievement-relevant characters across the 3 start dates, summarize each in 1-3 sentences (why they're interesting, what start date), and note that this is a curated subset, not the full wiki list." }
+]

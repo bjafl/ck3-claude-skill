@@ -4,5 +4,5 @@
   { "title": "FAQ", "output": "faq.md" },
   { "title": "QNA", "output": "qna.md", "notes": "Check overlap with FAQ before writing both -- may fold into one file." },
   { "title": "Game rules", "output": "game-rules.md" },
-  { "title": "Patches", "output": "patch-history.md", "notes": "DO NOT crawl all 39 Category:Patches pages -- needs an LLM to synthesize a condensed history of major mechanic changes, not a per-patch changelog dump. Genuinely needs writer judgment, not zero-LLM." }
+  { "title": "Patches", "output": "patch-history.md", "notes": "DO NOT fetch or crawl the 39 individual Category:Patches pages -- use only the 'Patches' hub page content itself. Summarize major mechanic-changing patches at a high level; do not attempt a full changelog." }
 ]

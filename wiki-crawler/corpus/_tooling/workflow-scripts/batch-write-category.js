@@ -61,10 +61,10 @@ const results = await pipeline(
   (batch, _item, idx) => {
     const titlesJson = JSON.stringify(batch.map((b) => b.title))
     const fileList = batch
-      .map((b) => `- "${b.title}" -> ${categoryDir}/${b.output} (tags: ${JSON.stringify(b.tags || [])}, dlc: ${JSON.stringify(b.dlc || [])})`)
+      .map((b) => `- "${b.title}" -> ${b.dir || categoryDir}/${b.output} (tags: ${JSON.stringify(b.tags || [])}, dlc: ${JSON.stringify(b.dlc || [])})`)
       .join('\n')
 
-    const prompt = `You are writing CK3 companion-skill reference files for the "${categoryDir}" category.
+    const prompt = `You are writing CK3 companion-skill reference files for the "${categoryDir}" categor${categoryDir.includes(',') || categoryDir.includes('+') ? 'ies' : 'y'}.
 This is a one-shot batch: write all ${batch.length} files, then report back. Do not ask
 clarifying questions -- if a page redirects or is missing, note it in "issues" and skip it.
 

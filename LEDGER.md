@@ -16,24 +16,23 @@ to `HANDOFF.md` §4 itself; flagged in `_tooling/workitems/README.md` pending a 
 
 | # | Category | Status | Notes |
 |---|---|---|---|
-| 00 | `meta` | not started | work-item list ready (`_tooling/workitems/00-meta.json`) |
+| 00 | `meta` | **done** | 6/6 items. `faq.md` needs a follow-up re-pass — see session log, real content-quality issue not just hygiene |
 | 01 | `character-mechanics` | **substantially done** | 13/14 items (Family correctly skipped — disambiguation page, no content) |
 | 02 | `realm-and-succession` | **substantially done** | 24 files: 6 from the by-hand Government pilot + 18 from the Workflow batch |
 | 03 | `religion-and-culture` | **done** | all 14 items written |
-| 04 | `intrigue-and-diplomacy` | not started | work-item list **incomplete** — only 2 confirmed titles, see workitems/README.md |
+| 04 | `intrigue-and-diplomacy` | **done** | 2 items — genuinely thin category, confirmed via search (Faction/Secret/Marriage all fold into other files) |
 | 05 | `warfare` | **done** | 6 items (Situations deduped into 02, see below) |
 | 06 | `court-and-council` | **merged into 02** | see taxonomy correction above |
-| 07 | `rulers-and-dynasties` | not started | **no work-item list yet** — category_members not explored |
-| 08 | `decisions-and-activities` | not started | **no work-item list yet** — category_members not explored |
+| 07 | `rulers-and-dynasties` | **done** | Bookmarks + curated Interesting-characters highlights (source page is 334 KB, condensed to ~18 KB) |
+| 08 | `decisions-and-activities` | **done** | Decisions hub + 3 decision-type pages |
 | 09 | `achievements` | **done** | 10 DLC-group files + index, built via `split_achievements.py` (zero-LLM — wiki already groups achievements by `### DLC` heading) |
-| 10 | `strategy` | not started | **no work-item list yet** |
+| 10 | `strategy` | **done** | Beginner's guide (Walkthroughs stay excluded, cross-referenced by name only) |
 | 11 | `reference` | **in progress** | 11/12 zero-LLM candidates done (9 building sub-lists, list-of-kingdoms, list-of-empires). Artifacts list flagged as NOT a clean zero-LLM candidate (29% prose) — needs a writer pass instead. |
 
-`skill/` directory: still empty. `wiki-crawler/corpus/_tooling/manifest.tsv`: 79 entries, all
+`skill/` directory: still empty. `wiki-crawler/corpus/_tooling/manifest.tsv`: 94 entries, all
 verified consistent (`_tooling/check_corpus.py` — no duplicates, no dangling references, every
-corpus `.md` file accounted for, regenerated from disk ground truth 2026-08-23 after a batch of 4
-concurrent Workflow runs corrupted the append-only version — see session log for what happened and
-`_tooling/regen_manifest.py` for the fix/recovery tool).
+corpus `.md` file accounted for, regenerated from disk ground truth via `_tooling/regen_manifest.py`
+each round rather than trusting accumulated appends — see session log for why).
 
 ---
 
@@ -79,22 +78,27 @@ of it requires `Workflow` itself to have been invoked yet.
 
 ## Next planned step
 
-Infrastructure gaps from the last session are closed (see above). What's left before a full-scale
-build:
-1. **Your explicit go-ahead to invoke `Workflow`** — still not given; this is the one item on the
-   original gap list that isn't a script/tooling problem.
-2. Fill the 3 missing work-item lists (07-rulers-and-dynasties, 08-decisions-and-activities,
-   10-strategy) via `category_members`/`search_titles` before batching those.
-3. Complete 04-intrigue-and-diplomacy's work-item list (currently only 2 of an unknown-but-larger
-   set of real titles confirmed).
-4. Decide the 06-into-02 taxonomy fold-in for real (update `HANDOFF.md` §4), rather than leaving it
-   as a flagged note.
+All 12 categories now have content (11/12 fully, `reference` at 11/12 zero-LLM items with the
+Artifacts list still open). What's left:
 
-Once (1) happens: run `build_workflow_args.py` on a work-item file, invoke `Workflow` with
-`batch-write-category.js` + that args payload, verify output quality on the first batch before
-launching the rest, chunk into parallel `Workflow` calls per HANDOFF §5.7 for anything past ~15-20
-items. `02-realm-and-succession`'s remaining 18 items are the natural first real batch (list ready,
-category partially validated already by the by-hand pilot).
+1. **`faq.md` needs a real re-pass** — see session log, it's still close-to-verbatim in its
+   remaining ~30 sections despite the marketing-section strip. Best done as its own small Workflow/
+   agent job with an explicit "compress and flag outdated content" instruction, not a quick hand-fix.
+2. **Artifacts list** (`11-reference`) — the last zero-LLM candidate, flagged as NOT actually clean
+   (29% prose) — needs a real writer pass instead of `extract_reference.py`.
+3. **Decide the 06-into-02 taxonomy fold-in for real** (update `HANDOFF.md` §4) — still only a
+   flagged note in `_tooling/workitems/README.md`, never formally applied.
+4. **`01-character-mechanics/traits-overview.md`** covers all of Traits in one file — the original
+   work-item note guessed it would need splitting into several; it didn't, per a spot-check. Revisit
+   only if it turns out too large in practice for the skill's retrieval needs.
+5. Once content is believed complete: run `check_corpus.py` one more time, then move to HANDOFF §7
+   step 5 — cross-link scan (partially covered by check_corpus.py already), `README.md`/`INDEX.md`
+   with routing hints, copy into `skill/ck3-companion/references/`, eval pass via `skill-creator`,
+   description-optimization loop, package via `scripts.package_skill`.
+
+`build_workflow_args.py` + `batch-write-category.js` (now supporting per-item `dir` overrides for
+combined/thin-category runs) are proven across 2 rounds and 8 Workflow invocations — safe to reuse
+as-is for future batches (the Artifacts writer pass, a faq.md re-pass, etc.).
 
 **2026-08-23, later same session**: user gave the go-ahead and asked for 4 parallel Workflow runs.
 Launched via `batch-write-category.js` (Haiku, batchSize 6) on the 4 categories with the most
@@ -152,6 +156,86 @@ explicit hygiene pass rather than trusting agents:
 Post-fix state: `check_corpus.py` clean (79 files, no broken links, no manifest issues, no empty
 tags). Corpus is now 79 files across 6 categories (00 not started, 04/06/07/08/10 not started or
 merged, 09 and most of 11 done, 01/02/03/05 substantially built).
+
+**Committed 2026-08-23**: commit `488b628`, 105 files changed. Working tree clean after.
+
+**2026-08-23, same session, round 2**: user asked to finish the remaining work-item lists then run
+4 more parallel Workflow batches. Explored the real wiki for the 3 unexplored categories plus
+completed 04's list:
+
+- **04-intrigue-and-diplomacy**: confirmed genuinely thin — Schemes and Alliance are the only real
+  dedicated pages; Faction/Secret/Marriage all fold into other already-covered pages (Subjects,
+  Hooks, Interactions respectively per search results). List stays at 2 items.
+- **07-rulers-and-dynasties**: `Bookmarks` (51 KB, real content, 8 start-date recommendations) and
+  `Interesting characters` — the latter is **334 KB**, a per-start-date roster hitting the same
+  granularity trap as `List of counties` (HANDOFF §3). Work item explicitly instructs picking
+  ~20-30 notable/achievement-relevant characters rather than reproducing the full list.
+  `Ruler Designer` already covered in 01, not duplicated here.
+- **08-decisions-and-activities**: `Category:Decisions` confirmed — Decisions hub + Adventurer/
+  Character/Ruler decisions (4 items). `Activity`/`Activities` already covered in 01, not
+  duplicated.
+- **10-strategy**: `Beginner's guide` (27 KB, real content) is the only solid candidate; the 2
+  known Walkthroughs stay excluded per the existing low-value judgment, just cross-referenced by
+  name.
+
+Since 04 and 07 were both very thin (2 items each), combined them into one Workflow run using a
+new `dir` field on work items (`batch-write-category.js` updated to take `item.dir` as an
+override, falling back to the run's `categoryDir` — backward compatible with all earlier runs) so
+one Workflow call can write into two different category directories. This kept the total at
+exactly 4 parallel Workflow invocations as asked, covering all 5 remaining categories:
+
+| Categories | Items | Task ID | Run ID |
+|---|---|---|---|
+| 00-meta | 6 | `woafslwas` | `wf_e1503d75-b1e` |
+| 08-decisions-and-activities | 4 | `wc42kojq5` | `wf_89d12216-41f` |
+| 10-strategy | 1 | `wevnuikgm` | `wf_ad87245a-eab` |
+| 04-intrigue-and-diplomacy + 07-rulers-and-dynasties | 4 | `wr09ogj8k` | `wf_637e617d-0a4` |
+
+New work-item files: `_tooling/workitems/08-decisions-and-activities.json`,
+`_tooling/workitems/10-strategy.json`, `_tooling/workitems/04-and-07-combined.json`.
+
+**Results, all 4 landed**: 15 new files, corpus went from 79 → 94. Same "missing StructuredOutput"
+failure mode hit 2 of the 4 runs (00-meta's single 6-item batch, and interestingly *not* the other
+3) — same recovery as before: the files were correctly written to disk regardless, only the
+workflow's own aggregated JSON came back empty for that one. Post-batch hygiene pass found:
+
+- **Same `category:` numbering bug recurred** across all 4 new directories (`category:
+  00-meta` instead of `category: meta`, etc.) — same `sed` fix as round 1. Worth revisiting the
+  style cheat-sheet wording if this keeps recurring; it's now happened in both rounds despite the
+  cheat-sheet's own front-matter example showing the bare form.
+- **All 6 files in the 00-meta batch had empty `tags: []`** (the same batch that hit the
+  StructuredOutput failure — plausibly related, though not confirmed causally). Fixed with
+  `backfill_tags.py`, same as round 1.
+- **3 broken cross-links** in `decisions-overview.md` — the agent guessed at paths for content it
+  hadn't actually seen (`../02-realm-and-succession/adventurers.md` — no such file, meant the
+  Adventurer government section of `government-overview.md`; `./activities.md` — assumed same-
+  directory, actually lives in `01-character-mechanics/`; `../03-character-development/lifestyle.md`
+  — invented a category name that doesn't exist, actually `01-character-mechanics/lifestyle.md`).
+  Fixed by hand. **Lesson for future batches**: agents cross-linking to content from *other*
+  categories they didn't write this run are guessing at paths — consider passing a short index of
+  already-known corpus paths into the prompt for categories with heavy cross-category linking.
+- **`faq.md` was a real content-quality problem, not just hygiene**: the source wiki page is
+  Paradox's 2020 pre-launch community FAQ. The agent fetched and kept the entire page almost
+  verbatim (133 KB), including ~210 lines of pure 2020 marketing/pre-order/release-logistics
+  content (pricing in USD, "PURCHASE NOW!", GeForce Now availability) that has zero value for a
+  current player and violates STYLE.md rule 2 (rewrite/compress, don't paste). This wasn't caught
+  by my own work-item note either — I hadn't previewed the page before assigning it. Fixed the
+  worst of it by hand: stripped the marketing section entirely (down to 122 KB) and added an
+  explicit `> ⚠️` banner noting the remaining ~30 sections are pre-launch dev commentary and may be
+  outdated. **Not fully fixed** — the remaining sections are still close-to-verbatim Q&A, not
+  compressed to ~half length per STYLE.md rule 2. Flagged as a follow-up: this file genuinely needs
+  a real writer-agent re-pass (fetch fresh, rewrite with explicit outdated-content judgment per
+  section), not something to rush through by hand.
+- **`interesting-characters.md` curation was genuinely good** — the 334 KB source page was
+  condensed into a well-organized ~18 KB highlights file (curated subset by start date/region,
+  tight 2-4 sentence entries with real hooks), exactly what the work item asked for instead of
+  reproducing the full roster.
+- **`qna.md` vs `faq.md` overlap check (flagged in the work item) turned out to be a non-issue** —
+  different real sources (QNA = community Discord Q&A, FAQ = dev pre-launch commentary), kept as
+  separate files correctly.
+
+Post-fix state: `check_corpus.py` clean (94 files, no broken links, no manifest issues, no empty
+tags).
 
 ---
 

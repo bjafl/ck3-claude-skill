@@ -1,0 +1,6 @@
+[
+  { "title": "Decisions", "output": "decisions-overview.md" },
+  { "title": "Adventurer decisions", "output": "adventurer-decisions.md", "notes": "Requires Roads to Power -- mark dlc: [Roads to Power]." },
+  { "title": "Character decisions", "output": "character-decisions.md" },
+  { "title": "Ruler decisions", "output": "ruler-decisions.md" }
+]
