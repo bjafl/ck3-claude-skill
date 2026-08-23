@@ -1,0 +1,11 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+
+# OS
+.DS_Store
+
+# Node (skills CLI installer artifacts, if any appear)
+node_modules/

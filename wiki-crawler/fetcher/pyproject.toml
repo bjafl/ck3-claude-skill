@@ -1,0 +1,19 @@
+[project]
+name = "ck3-wiki-crawler"
+version = "0.1.0"
+description = "Playwright-driven fetcher for ck3.paradoxwikis.com, bypassing its Fastly Client Challenge via a real headless browser."
+readme = "README.md"
+authors = [
+    { name = "bjafl", email = "bjarte@dev.flode.net" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "playwright>=1.62.0",
+]
+
+[project.scripts]
+ck3-wiki-crawler = "ck3_wiki_crawler:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
