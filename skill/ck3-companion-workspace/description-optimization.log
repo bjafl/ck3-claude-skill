@@ -1,0 +1,1836 @@
+Split: 17 train, 5 test (holdout=0.25)
+
+============================================================
+Iteration 1/5
+Description: Companion reference for Crusader Kings III (CK3), Paradox's medieval grand strategy game, covering vanilla gameplay at patch 1.19. Use for questions about game mechanics, strategy, or achievements, e.g. "how does scheme success chance work in ck3", "what succession law should I use as a count", "how do I get the Roman Empire achievement", "what does Crown Authority level 3 unlock", "I'm playing Clan government, what should I focus on", "what artifacts exist", "how do I switch from tribal to feudal", "difference between primogeniture and confederate partition". Covers character mechanics, realm/succession, religion/culture, intrigue, warfare, decisions, all 188 achievements by DLC, and reference tables for buildings/artifacts/empires/kingdoms. Skip for Steam pricing, other Paradox/strategy games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods (vanilla-only), or unrelated PC troubleshooting.
+============================================================
+Train: 27/51 correct, precision=100% recall=11% accuracy=53% (133.7s)
+  [FAIL] rate=0/3 expected=True: what DLC do I need for the mongol invasion event chain
+  [FAIL] rate=1/3 expected=True: my vassal keeps joining factions against me, how do I stop t
+  [FAIL] rate=0/3 expected=True: how do I switch from tribal to feudal government
+  [FAIL] rate=0/3 expected=True: what's a good beginner strategy for ck3
+  [FAIL] rate=1/3 expected=True: what does crown authority level 3 give you
+  [FAIL] rate=0/3 expected=True: I'm playing clan government in the muslim world, what should
+  [FAIL] rate=0/3 expected=True: how does scheme success chance work in ck3
+  [FAIL] rate=1/3 expected=True: what succession law should I pick as a count with 3 kids
+  [FAIL] rate=0/3 expected=True: how does the tax jurisdiction system work for clan governmen
+  [PASS] rate=0/3 expected=False: what's for dinner tonight, I'm thinking pasta
+  [PASS] rate=0/3 expected=False: can you explain the actual historical Byzantine succession c
+  [PASS] rate=0/3 expected=False: my game keeps crashing on startup, graphics driver issue may
+  [PASS] rate=0/3 expected=False: write me a short story about a medieval knight
+  [PASS] rate=0/3 expected=False: how do I set up a python virtual environment
+  [PASS] rate=0/3 expected=False: what's the release date for hearts of iron 4's next DLC
+  [PASS] rate=0/3 expected=False: how much does crusader kings 3 cost on steam
+  [PASS] rate=0/3 expected=False: explain how feudalism worked in real medieval europe
+Test : 7/15 correct, precision=100% recall=11% accuracy=47% (0.0s)
+  [FAIL] rate=0/3 expected=True: what's the difference between primogeniture and confederate 
+  [FAIL] rate=0/3 expected=True: what artifacts exist in ck3 and what do they do
+  [FAIL] rate=1/3 expected=True: how do I get the achievement for restoring the roman empire 
+  [PASS] rate=0/3 expected=False: how do I install the AGOT mod for crusader kings 3
+  [PASS] rate=0/3 expected=False: what's the best strategy in europa universalis 4 for playing
+
+Improving description...
+Proposed (55.5s): Answer Crusader Kings III (CK3) gameplay questions grounded in a patch-1.19 vanilla reference, not general knowledge. Trigger on CK3 terminology even when the user doesn't say "CK3" or "Crusader Kings": crown authority, vassals and factions, succession laws (primogeniture, gavelkind, confederate partition), government types (feudal, tribal, clan, theocracy) and converting between them, schemes and intrigue, councils, religion, faith, doctrine, tenets, culture, traditions, warfare, casus belli, decisions, artifacts, dynasties, DLC content, and any of the 188 achievements. Also covers "what should I focus on" strategy questions for a given government, culture, or religion, and beginner strategy. Ground exact numbers, requirements, and mechanics in bundled data rather than guessing. Skip: Steam pricing, other Paradox games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods, unrelated PC troubleshooting.
+
+============================================================
+Iteration 2/5
+Description: Answer Crusader Kings III (CK3) gameplay questions grounded in a patch-1.19 vanilla reference, not general knowledge. Trigger on CK3 terminology even when the user doesn't say "CK3" or "Crusader Kings": crown authority, vassals and factions, succession laws (primogeniture, gavelkind, confederate partition), government types (feudal, tribal, clan, theocracy) and converting between them, schemes and intrigue, councils, religion, faith, doctrine, tenets, culture, traditions, warfare, casus belli, decisions, artifacts, dynasties, DLC content, and any of the 188 achievements. Also covers "what should I focus on" strategy questions for a given government, culture, or religion, and beginner strategy. Ground exact numbers, requirements, and mechanics in bundled data rather than guessing. Skip: Steam pricing, other Paradox games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods, unrelated PC troubleshooting.
+============================================================
+Train: 28/51 correct, precision=100% recall=15% accuracy=55% (135.5s)
+  [FAIL] rate=0/3 expected=True: what DLC do I need for the mongol invasion event chain
+  [FAIL] rate=1/3 expected=True: my vassal keeps joining factions against me, how do I stop t
+  [FAIL] rate=1/3 expected=True: how do I switch from tribal to feudal government
+  [FAIL] rate=0/3 expected=True: what's a good beginner strategy for ck3
+  [FAIL] rate=0/3 expected=True: what does crown authority level 3 give you
+  [FAIL] rate=0/3 expected=True: I'm playing clan government in the muslim world, what should
+  [FAIL] rate=1/3 expected=True: how does scheme success chance work in ck3
+  [FAIL] rate=0/3 expected=True: what succession law should I pick as a count with 3 kids
+  [FAIL] rate=1/3 expected=True: how does the tax jurisdiction system work for clan governmen
+  [PASS] rate=0/3 expected=False: what's for dinner tonight, I'm thinking pasta
+  [PASS] rate=0/3 expected=False: can you explain the actual historical Byzantine succession c
+  [PASS] rate=0/3 expected=False: my game keeps crashing on startup, graphics driver issue may
+  [PASS] rate=0/3 expected=False: how do I set up a python virtual environment
+  [PASS] rate=0/3 expected=False: write me a short story about a medieval knight
+  [PASS] rate=0/3 expected=False: what's the release date for hearts of iron 4's next DLC
+  [PASS] rate=0/3 expected=False: how much does crusader kings 3 cost on steam
+  [PASS] rate=0/3 expected=False: explain how feudalism worked in real medieval europe
+Test : 8/15 correct, precision=100% recall=22% accuracy=53% (0.0s)
+  [FAIL] rate=1/3 expected=True: what's the difference between primogeniture and confederate 
+  [FAIL] rate=1/3 expected=True: what artifacts exist in ck3 and what do they do
+  [FAIL] rate=0/3 expected=True: how do I get the achievement for restoring the roman empire 
+  [PASS] rate=0/3 expected=False: what's the best strategy in europa universalis 4 for playing
+  [PASS] rate=0/3 expected=False: how do I install the AGOT mod for crusader kings 3
+
+Improving description...
+Proposed (105.4s): Answer questions about playing Crusader Kings III (CK3), Paradox's medieval strategy game — even when the user never says "CK3" and just describes their in-game situation. Triggers on: crown authority, vassals/factions, succession laws (primogeniture, gavelkind, confederate partition, elective), government types and converting between them (tribal to feudal, clan tax jurisdiction), scheme/intrigue success chance, councils, faith/doctrine/tenets, culture/traditions, warfare/casus belli, decisions, artifacts, dynasties, which DLC a feature or event chain requires, any of the 188 achievements, and "what should I focus on"/best-strategy or beginner-strategy questions for a given government, culture, or religion. Exact numbers and mechanics for this niche game are easy to misremember — ground answers in bundled patch-1.19 reference data rather than guessing. Skip: Steam pricing, other Paradox games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods, unrelated PC troubleshooting.
+
+============================================================
+Iteration 3/5
+Description: Answer questions about playing Crusader Kings III (CK3), Paradox's medieval strategy game — even when the user never says "CK3" and just describes their in-game situation. Triggers on: crown authority, vassals/factions, succession laws (primogeniture, gavelkind, confederate partition, elective), government types and converting between them (tribal to feudal, clan tax jurisdiction), scheme/intrigue success chance, councils, faith/doctrine/tenets, culture/traditions, warfare/casus belli, decisions, artifacts, dynasties, which DLC a feature or event chain requires, any of the 188 achievements, and "what should I focus on"/best-strategy or beginner-strategy questions for a given government, culture, or religion. Exact numbers and mechanics for this niche game are easy to misremember — ground answers in bundled patch-1.19 reference data rather than guessing. Skip: Steam pricing, other Paradox games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods, unrelated PC troubleshooting.
+============================================================
+Train: 27/51 correct, precision=100% recall=11% accuracy=53% (125.4s)
+  [FAIL] rate=0/3 expected=True: what DLC do I need for the mongol invasion event chain
+  [FAIL] rate=1/3 expected=True: my vassal keeps joining factions against me, how do I stop t
+  [FAIL] rate=0/3 expected=True: how do I switch from tribal to feudal government
+  [FAIL] rate=1/3 expected=True: what's a good beginner strategy for ck3
+  [FAIL] rate=1/3 expected=True: what does crown authority level 3 give you
+  [FAIL] rate=0/3 expected=True: I'm playing clan government in the muslim world, what should
+  [FAIL] rate=0/3 expected=True: how does scheme success chance work in ck3
+  [FAIL] rate=0/3 expected=True: what succession law should I pick as a count with 3 kids
+  [FAIL] rate=0/3 expected=True: how does the tax jurisdiction system work for clan governmen
+  [PASS] rate=0/3 expected=False: what's for dinner tonight, I'm thinking pasta
+  [PASS] rate=0/3 expected=False: can you explain the actual historical Byzantine succession c
+  [PASS] rate=0/3 expected=False: my game keeps crashing on startup, graphics driver issue may
+  [PASS] rate=0/3 expected=False: write me a short story about a medieval knight
+  [PASS] rate=0/3 expected=False: how do I set up a python virtual environment
+  [PASS] rate=0/3 expected=False: what's the release date for hearts of iron 4's next DLC
+  [PASS] rate=0/3 expected=False: how much does crusader kings 3 cost on steam
+  [PASS] rate=0/3 expected=False: explain how feudalism worked in real medieval europe
+Test : 6/15 correct, precision=50% recall=11% accuracy=40% (0.0s)
+  [FAIL] rate=0/3 expected=True: what's the difference between primogeniture and confederate 
+  [FAIL] rate=1/3 expected=True: what artifacts exist in ck3 and what do they do
+  [FAIL] rate=0/3 expected=True: how do I get the achievement for restoring the roman empire 
+  [PASS] rate=1/3 expected=False: how do I install the AGOT mod for crusader kings 3
+  [PASS] rate=0/3 expected=False: what's the best strategy in europa universalis 4 for playing
+
+Improving description...
+Proposed (78.8s): Companion reference for Crusader Kings III (CK3), Paradox's medieval grand strategy game, patch 1.19. Use for in-game questions even if the user never says "CK3" — e.g. "how does scheme success chance work", "what succession law for a count with several kids", "how do I get the Roman Empire achievement", "what does Crown Authority level 3 unlock", "playing Clan government in the Muslim world, what should I focus on", "how do I switch from tribal to feudal", "how does tax jurisdiction work for clan", "my vassals keep joining factions against me", "what DLC do I need for the Mongol invasion event chain", "good beginner strategy for ck3". Covers character mechanics, realm/succession, religion/culture, intrigue, warfare, decisions, all 188 achievements by DLC, and reference tables for buildings/artifacts/empires/kingdoms. Skip for Steam pricing, other Paradox games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods, unrelated PC troubleshooting.
+
+============================================================
+Iteration 4/5
+Description: Companion reference for Crusader Kings III (CK3), Paradox's medieval grand strategy game, patch 1.19. Use for in-game questions even if the user never says "CK3" — e.g. "how does scheme success chance work", "what succession law for a count with several kids", "how do I get the Roman Empire achievement", "what does Crown Authority level 3 unlock", "playing Clan government in the Muslim world, what should I focus on", "how do I switch from tribal to feudal", "how does tax jurisdiction work for clan", "my vassals keep joining factions against me", "what DLC do I need for the Mongol invasion event chain", "good beginner strategy for ck3". Covers character mechanics, realm/succession, religion/culture, intrigue, warfare, decisions, all 188 achievements by DLC, and reference tables for buildings/artifacts/empires/kingdoms. Skip for Steam pricing, other Paradox games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods, unrelated PC troubleshooting.
+============================================================
+Train: 27/51 correct, precision=100% recall=11% accuracy=53% (169.7s)
+  [FAIL] rate=1/3 expected=True: my vassal keeps joining factions against me, how do I stop t
+  [FAIL] rate=0/3 expected=True: what DLC do I need for the mongol invasion event chain
+  [FAIL] rate=0/3 expected=True: how do I switch from tribal to feudal government
+  [FAIL] rate=0/3 expected=True: what's a good beginner strategy for ck3
+  [FAIL] rate=1/3 expected=True: what does crown authority level 3 give you
+  [FAIL] rate=1/3 expected=True: I'm playing clan government in the muslim world, what should
+  [FAIL] rate=0/3 expected=True: how does scheme success chance work in ck3
+  [FAIL] rate=0/3 expected=True: what succession law should I pick as a count with 3 kids
+  [FAIL] rate=0/3 expected=True: how does the tax jurisdiction system work for clan governmen
+  [PASS] rate=0/3 expected=False: can you explain the actual historical Byzantine succession c
+  [PASS] rate=0/3 expected=False: what's for dinner tonight, I'm thinking pasta
+  [PASS] rate=0/3 expected=False: my game keeps crashing on startup, graphics driver issue may
+  [PASS] rate=0/3 expected=False: how do I set up a python virtual environment
+  [PASS] rate=0/3 expected=False: write me a short story about a medieval knight
+  [PASS] rate=0/3 expected=False: what's the release date for hearts of iron 4's next DLC
+  [PASS] rate=0/3 expected=False: how much does crusader kings 3 cost on steam
+  [PASS] rate=0/3 expected=False: explain how feudalism worked in real medieval europe
+Test : 8/15 correct, precision=75% recall=33% accuracy=53% (0.0s)
+  [FAIL] rate=1/3 expected=True: what's the difference between primogeniture and confederate 
+  [FAIL] rate=1/3 expected=True: what artifacts exist in ck3 and what do they do
+  [FAIL] rate=1/3 expected=True: how do I get the achievement for restoring the roman empire 
+  [PASS] rate=1/3 expected=False: how do I install the AGOT mod for crusader kings 3
+  [PASS] rate=0/3 expected=False: what's the best strategy in europa universalis 4 for playing
+
+Improving description...
+Proposed (114.5s): Crusader Kings III (CK3) — Paradox's medieval dynasty/realm strategy game, patch 1.19. Use for ANY question about playing CK3, even if the user never says "CK3" or "Crusader Kings" and just describes their in-game situation: crown authority, vassals and factions turning against you, succession laws (primogeniture, gavelkind, confederate partition) for an heir or multiple kids, government types (tribal, feudal, clan, theocracy) and converting between them, clan tax jurisdiction, scheme/intrigue success odds, councils, faiths, doctrines, tenets, culture, traditions, warfare, casus belli, decisions, artifacts, dynasties, which DLC an event chain needs, any of the 188 achievements, and beginner or early-game strategy for a given government, culture, or religion. Prefer this skill whenever a strategy-game question could plausibly be about ruling a medieval realm this way. Skip: Steam pricing, other Paradox games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods, unrelated PC troubleshooting.
+
+============================================================
+Iteration 5/5
+Description: Crusader Kings III (CK3) — Paradox's medieval dynasty/realm strategy game, patch 1.19. Use for ANY question about playing CK3, even if the user never says "CK3" or "Crusader Kings" and just describes their in-game situation: crown authority, vassals and factions turning against you, succession laws (primogeniture, gavelkind, confederate partition) for an heir or multiple kids, government types (tribal, feudal, clan, theocracy) and converting between them, clan tax jurisdiction, scheme/intrigue success odds, councils, faiths, doctrines, tenets, culture, traditions, warfare, casus belli, decisions, artifacts, dynasties, which DLC an event chain needs, any of the 188 achievements, and beginner or early-game strategy for a given government, culture, or religion. Prefer this skill whenever a strategy-game question could plausibly be about ruling a medieval realm this way. Skip: Steam pricing, other Paradox games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods, unrelated PC troubleshooting.
+============================================================
+Train: 27/51 correct, precision=100% recall=11% accuracy=53% (146.9s)
+  [FAIL] rate=1/3 expected=True: my vassal keeps joining factions against me, how do I stop t
+  [FAIL] rate=0/3 expected=True: what DLC do I need for the mongol invasion event chain
+  [FAIL] rate=1/3 expected=True: how do I switch from tribal to feudal government
+  [FAIL] rate=0/3 expected=True: what's a good beginner strategy for ck3
+  [FAIL] rate=0/3 expected=True: what does crown authority level 3 give you
+  [FAIL] rate=0/3 expected=True: I'm playing clan government in the muslim world, what should
+  [FAIL] rate=1/3 expected=True: how does scheme success chance work in ck3
+  [FAIL] rate=0/3 expected=True: what succession law should I pick as a count with 3 kids
+  [FAIL] rate=0/3 expected=True: how does the tax jurisdiction system work for clan governmen
+  [PASS] rate=0/3 expected=False: what's for dinner tonight, I'm thinking pasta
+  [PASS] rate=0/3 expected=False: can you explain the actual historical Byzantine succession c
+  [PASS] rate=0/3 expected=False: my game keeps crashing on startup, graphics driver issue may
+  [PASS] rate=0/3 expected=False: how do I set up a python virtual environment
+  [PASS] rate=0/3 expected=False: write me a short story about a medieval knight
+  [PASS] rate=0/3 expected=False: what's the release date for hearts of iron 4's next DLC
+  [PASS] rate=0/3 expected=False: how much does crusader kings 3 cost on steam
+  [PASS] rate=0/3 expected=False: explain how feudalism worked in real medieval europe
+Test : 7/15 correct, precision=100% recall=11% accuracy=47% (0.0s)
+  [FAIL] rate=1/3 expected=True: what's the difference between primogeniture and confederate 
+  [FAIL] rate=0/3 expected=True: what artifacts exist in ck3 and what do they do
+  [FAIL] rate=0/3 expected=True: how do I get the achievement for restoring the roman empire 
+  [PASS] rate=0/3 expected=False: how do I install the AGOT mod for crusader kings 3
+  [PASS] rate=0/3 expected=False: what's the best strategy in europa universalis 4 for playing
+
+Max iterations reached (5).
+
+Exit reason: max_iterations (5)
+Best score: 2/5 (iteration 1)
+
+Report: /tmp/skill_description_report_ck3-companion_20260823_100053.html
+Results saved to: /mnt/data/bjarte/source/ck3-claude-skill/skill/ck3-companion-workspace/2026-08-23_100053
+{
+  "exit_reason": "max_iterations (5)",
+  "original_description": "Companion reference for Crusader Kings III (CK3), Paradox's medieval grand strategy game, covering vanilla gameplay at patch 1.19. Use for questions about game mechanics, strategy, or achievements, e.g. \"how does scheme success chance work in ck3\", \"what succession law should I use as a count\", \"how do I get the Roman Empire achievement\", \"what does Crown Authority level 3 unlock\", \"I'm playing Clan government, what should I focus on\", \"what artifacts exist\", \"how do I switch from tribal to feudal\", \"difference between primogeniture and confederate partition\". Covers character mechanics, realm/succession, religion/culture, intrigue, warfare, decisions, all 188 achievements by DLC, and reference tables for buildings/artifacts/empires/kingdoms. Skip for Steam pricing, other Paradox/strategy games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods (vanilla-only), or unrelated PC troubleshooting.",
+  "best_description": "Companion reference for Crusader Kings III (CK3), Paradox's medieval grand strategy game, covering vanilla gameplay at patch 1.19. Use for questions about game mechanics, strategy, or achievements, e.g. \"how does scheme success chance work in ck3\", \"what succession law should I use as a count\", \"how do I get the Roman Empire achievement\", \"what does Crown Authority level 3 unlock\", \"I'm playing Clan government, what should I focus on\", \"what artifacts exist\", \"how do I switch from tribal to feudal\", \"difference between primogeniture and confederate partition\". Covers character mechanics, realm/succession, religion/culture, intrigue, warfare, decisions, all 188 achievements by DLC, and reference tables for buildings/artifacts/empires/kingdoms. Skip for Steam pricing, other Paradox/strategy games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods (vanilla-only), or unrelated PC troubleshooting.",
+  "best_score": "2/5",
+  "best_train_score": "8/17",
+  "best_test_score": "2/5",
+  "final_description": "Crusader Kings III (CK3) \u2014 Paradox's medieval dynasty/realm strategy game, patch 1.19. Use for ANY question about playing CK3, even if the user never says \"CK3\" or \"Crusader Kings\" and just describes their in-game situation: crown authority, vassals and factions turning against you, succession laws (primogeniture, gavelkind, confederate partition) for an heir or multiple kids, government types (tribal, feudal, clan, theocracy) and converting between them, clan tax jurisdiction, scheme/intrigue success odds, councils, faiths, doctrines, tenets, culture, traditions, warfare, casus belli, decisions, artifacts, dynasties, which DLC an event chain needs, any of the 188 achievements, and beginner or early-game strategy for a given government, culture, or religion. Prefer this skill whenever a strategy-game question could plausibly be about ruling a medieval realm this way. Skip: Steam pricing, other Paradox games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods, unrelated PC troubleshooting.",
+  "iterations_run": 5,
+  "holdout": 0.25,
+  "train_size": 17,
+  "test_size": 5,
+  "history": [
+    {
+      "iteration": 1,
+      "description": "Companion reference for Crusader Kings III (CK3), Paradox's medieval grand strategy game, covering vanilla gameplay at patch 1.19. Use for questions about game mechanics, strategy, or achievements, e.g. \"how does scheme success chance work in ck3\", \"what succession law should I use as a count\", \"how do I get the Roman Empire achievement\", \"what does Crown Authority level 3 unlock\", \"I'm playing Clan government, what should I focus on\", \"what artifacts exist\", \"how do I switch from tribal to feudal\", \"difference between primogeniture and confederate partition\". Covers character mechanics, realm/succession, religion/culture, intrigue, warfare, decisions, all 188 achievements by DLC, and reference tables for buildings/artifacts/empires/kingdoms. Skip for Steam pricing, other Paradox/strategy games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods (vanilla-only), or unrelated PC troubleshooting.",
+      "train_passed": 8,
+      "train_failed": 9,
+      "train_total": 17,
+      "train_results": [
+        {
+          "query": "what DLC do I need for the mongol invasion event chain",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "my vassal keeps joining factions against me, how do I stop that in crusader kings",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how do I switch from tribal to feudal government",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what's a good beginner strategy for ck3",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what does crown authority level 3 give you",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "I'm playing clan government in the muslim world, what should I focus on early game",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how does scheme success chance work in ck3",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what succession law should I pick as a count with 3 kids",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how does the tax jurisdiction system work for clan governments",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what's for dinner tonight, I'm thinking pasta",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "can you explain the actual historical Byzantine succession crisis of 1204",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "my game keeps crashing on startup, graphics driver issue maybe",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "write me a short story about a medieval knight",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "how do I set up a python virtual environment",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the release date for hearts of iron 4's next DLC",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "how much does crusader kings 3 cost on steam",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "explain how feudalism worked in real medieval europe",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "test_passed": 2,
+      "test_failed": 3,
+      "test_total": 5,
+      "test_results": [
+        {
+          "query": "what's the difference between primogeniture and confederate partition succession",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what artifacts exist in ck3 and what do they do",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how do I get the achievement for restoring the roman empire in crusader kings 3",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how do I install the AGOT mod for crusader kings 3",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the best strategy in europa universalis 4 for playing as france",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "passed": 8,
+      "failed": 9,
+      "total": 17,
+      "results": [
+        {
+          "query": "what DLC do I need for the mongol invasion event chain",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "my vassal keeps joining factions against me, how do I stop that in crusader kings",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how do I switch from tribal to feudal government",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what's a good beginner strategy for ck3",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what does crown authority level 3 give you",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "I'm playing clan government in the muslim world, what should I focus on early game",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how does scheme success chance work in ck3",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what succession law should I pick as a count with 3 kids",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how does the tax jurisdiction system work for clan governments",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what's for dinner tonight, I'm thinking pasta",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "can you explain the actual historical Byzantine succession crisis of 1204",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "my game keeps crashing on startup, graphics driver issue maybe",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "write me a short story about a medieval knight",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "how do I set up a python virtual environment",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the release date for hearts of iron 4's next DLC",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "how much does crusader kings 3 cost on steam",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "explain how feudalism worked in real medieval europe",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 2,
+      "description": "Answer Crusader Kings III (CK3) gameplay questions grounded in a patch-1.19 vanilla reference, not general knowledge. Trigger on CK3 terminology even when the user doesn't say \"CK3\" or \"Crusader Kings\": crown authority, vassals and factions, succession laws (primogeniture, gavelkind, confederate partition), government types (feudal, tribal, clan, theocracy) and converting between them, schemes and intrigue, councils, religion, faith, doctrine, tenets, culture, traditions, warfare, casus belli, decisions, artifacts, dynasties, DLC content, and any of the 188 achievements. Also covers \"what should I focus on\" strategy questions for a given government, culture, or religion, and beginner strategy. Ground exact numbers, requirements, and mechanics in bundled data rather than guessing. Skip: Steam pricing, other Paradox games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods, unrelated PC troubleshooting.",
+      "train_passed": 8,
+      "train_failed": 9,
+      "train_total": 17,
+      "train_results": [
+        {
+          "query": "what DLC do I need for the mongol invasion event chain",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "my vassal keeps joining factions against me, how do I stop that in crusader kings",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how do I switch from tribal to feudal government",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what's a good beginner strategy for ck3",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what does crown authority level 3 give you",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "I'm playing clan government in the muslim world, what should I focus on early game",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how does scheme success chance work in ck3",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what succession law should I pick as a count with 3 kids",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how does the tax jurisdiction system work for clan governments",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what's for dinner tonight, I'm thinking pasta",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "can you explain the actual historical Byzantine succession crisis of 1204",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "my game keeps crashing on startup, graphics driver issue maybe",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "how do I set up a python virtual environment",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "write me a short story about a medieval knight",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the release date for hearts of iron 4's next DLC",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "how much does crusader kings 3 cost on steam",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "explain how feudalism worked in real medieval europe",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "test_passed": 2,
+      "test_failed": 3,
+      "test_total": 5,
+      "test_results": [
+        {
+          "query": "what's the difference between primogeniture and confederate partition succession",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what artifacts exist in ck3 and what do they do",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how do I get the achievement for restoring the roman empire in crusader kings 3",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what's the best strategy in europa universalis 4 for playing as france",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "how do I install the AGOT mod for crusader kings 3",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "passed": 8,
+      "failed": 9,
+      "total": 17,
+      "results": [
+        {
+          "query": "what DLC do I need for the mongol invasion event chain",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "my vassal keeps joining factions against me, how do I stop that in crusader kings",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how do I switch from tribal to feudal government",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what's a good beginner strategy for ck3",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what does crown authority level 3 give you",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "I'm playing clan government in the muslim world, what should I focus on early game",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how does scheme success chance work in ck3",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what succession law should I pick as a count with 3 kids",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how does the tax jurisdiction system work for clan governments",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what's for dinner tonight, I'm thinking pasta",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "can you explain the actual historical Byzantine succession crisis of 1204",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "my game keeps crashing on startup, graphics driver issue maybe",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "how do I set up a python virtual environment",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "write me a short story about a medieval knight",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the release date for hearts of iron 4's next DLC",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "how much does crusader kings 3 cost on steam",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "explain how feudalism worked in real medieval europe",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 3,
+      "description": "Answer questions about playing Crusader Kings III (CK3), Paradox's medieval strategy game \u2014 even when the user never says \"CK3\" and just describes their in-game situation. Triggers on: crown authority, vassals/factions, succession laws (primogeniture, gavelkind, confederate partition, elective), government types and converting between them (tribal to feudal, clan tax jurisdiction), scheme/intrigue success chance, councils, faith/doctrine/tenets, culture/traditions, warfare/casus belli, decisions, artifacts, dynasties, which DLC a feature or event chain requires, any of the 188 achievements, and \"what should I focus on\"/best-strategy or beginner-strategy questions for a given government, culture, or religion. Exact numbers and mechanics for this niche game are easy to misremember \u2014 ground answers in bundled patch-1.19 reference data rather than guessing. Skip: Steam pricing, other Paradox games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods, unrelated PC troubleshooting.",
+      "train_passed": 8,
+      "train_failed": 9,
+      "train_total": 17,
+      "train_results": [
+        {
+          "query": "what DLC do I need for the mongol invasion event chain",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "my vassal keeps joining factions against me, how do I stop that in crusader kings",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how do I switch from tribal to feudal government",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what's a good beginner strategy for ck3",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what does crown authority level 3 give you",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "I'm playing clan government in the muslim world, what should I focus on early game",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how does scheme success chance work in ck3",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what succession law should I pick as a count with 3 kids",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how does the tax jurisdiction system work for clan governments",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what's for dinner tonight, I'm thinking pasta",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "can you explain the actual historical Byzantine succession crisis of 1204",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "my game keeps crashing on startup, graphics driver issue maybe",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "write me a short story about a medieval knight",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "how do I set up a python virtual environment",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the release date for hearts of iron 4's next DLC",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "how much does crusader kings 3 cost on steam",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "explain how feudalism worked in real medieval europe",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "test_passed": 2,
+      "test_failed": 3,
+      "test_total": 5,
+      "test_results": [
+        {
+          "query": "what's the difference between primogeniture and confederate partition succession",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what artifacts exist in ck3 and what do they do",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how do I get the achievement for restoring the roman empire in crusader kings 3",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how do I install the AGOT mod for crusader kings 3",
+          "should_trigger": false,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the best strategy in europa universalis 4 for playing as france",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "passed": 8,
+      "failed": 9,
+      "total": 17,
+      "results": [
+        {
+          "query": "what DLC do I need for the mongol invasion event chain",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "my vassal keeps joining factions against me, how do I stop that in crusader kings",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how do I switch from tribal to feudal government",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what's a good beginner strategy for ck3",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what does crown authority level 3 give you",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "I'm playing clan government in the muslim world, what should I focus on early game",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how does scheme success chance work in ck3",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what succession law should I pick as a count with 3 kids",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how does the tax jurisdiction system work for clan governments",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what's for dinner tonight, I'm thinking pasta",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "can you explain the actual historical Byzantine succession crisis of 1204",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "my game keeps crashing on startup, graphics driver issue maybe",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "write me a short story about a medieval knight",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "how do I set up a python virtual environment",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the release date for hearts of iron 4's next DLC",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "how much does crusader kings 3 cost on steam",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "explain how feudalism worked in real medieval europe",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 4,
+      "description": "Companion reference for Crusader Kings III (CK3), Paradox's medieval grand strategy game, patch 1.19. Use for in-game questions even if the user never says \"CK3\" \u2014 e.g. \"how does scheme success chance work\", \"what succession law for a count with several kids\", \"how do I get the Roman Empire achievement\", \"what does Crown Authority level 3 unlock\", \"playing Clan government in the Muslim world, what should I focus on\", \"how do I switch from tribal to feudal\", \"how does tax jurisdiction work for clan\", \"my vassals keep joining factions against me\", \"what DLC do I need for the Mongol invasion event chain\", \"good beginner strategy for ck3\". Covers character mechanics, realm/succession, religion/culture, intrigue, warfare, decisions, all 188 achievements by DLC, and reference tables for buildings/artifacts/empires/kingdoms. Skip for Steam pricing, other Paradox games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods, unrelated PC troubleshooting.",
+      "train_passed": 8,
+      "train_failed": 9,
+      "train_total": 17,
+      "train_results": [
+        {
+          "query": "my vassal keeps joining factions against me, how do I stop that in crusader kings",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what DLC do I need for the mongol invasion event chain",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how do I switch from tribal to feudal government",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what's a good beginner strategy for ck3",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what does crown authority level 3 give you",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "I'm playing clan government in the muslim world, what should I focus on early game",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how does scheme success chance work in ck3",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what succession law should I pick as a count with 3 kids",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how does the tax jurisdiction system work for clan governments",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "can you explain the actual historical Byzantine succession crisis of 1204",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's for dinner tonight, I'm thinking pasta",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "my game keeps crashing on startup, graphics driver issue maybe",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "how do I set up a python virtual environment",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "write me a short story about a medieval knight",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the release date for hearts of iron 4's next DLC",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "how much does crusader kings 3 cost on steam",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "explain how feudalism worked in real medieval europe",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "test_passed": 2,
+      "test_failed": 3,
+      "test_total": 5,
+      "test_results": [
+        {
+          "query": "what's the difference between primogeniture and confederate partition succession",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what artifacts exist in ck3 and what do they do",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how do I get the achievement for restoring the roman empire in crusader kings 3",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how do I install the AGOT mod for crusader kings 3",
+          "should_trigger": false,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the best strategy in europa universalis 4 for playing as france",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "passed": 8,
+      "failed": 9,
+      "total": 17,
+      "results": [
+        {
+          "query": "my vassal keeps joining factions against me, how do I stop that in crusader kings",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what DLC do I need for the mongol invasion event chain",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how do I switch from tribal to feudal government",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what's a good beginner strategy for ck3",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what does crown authority level 3 give you",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "I'm playing clan government in the muslim world, what should I focus on early game",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how does scheme success chance work in ck3",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what succession law should I pick as a count with 3 kids",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how does the tax jurisdiction system work for clan governments",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "can you explain the actual historical Byzantine succession crisis of 1204",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's for dinner tonight, I'm thinking pasta",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "my game keeps crashing on startup, graphics driver issue maybe",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "how do I set up a python virtual environment",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "write me a short story about a medieval knight",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the release date for hearts of iron 4's next DLC",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "how much does crusader kings 3 cost on steam",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "explain how feudalism worked in real medieval europe",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "iteration": 5,
+      "description": "Crusader Kings III (CK3) \u2014 Paradox's medieval dynasty/realm strategy game, patch 1.19. Use for ANY question about playing CK3, even if the user never says \"CK3\" or \"Crusader Kings\" and just describes their in-game situation: crown authority, vassals and factions turning against you, succession laws (primogeniture, gavelkind, confederate partition) for an heir or multiple kids, government types (tribal, feudal, clan, theocracy) and converting between them, clan tax jurisdiction, scheme/intrigue success odds, councils, faiths, doctrines, tenets, culture, traditions, warfare, casus belli, decisions, artifacts, dynasties, which DLC an event chain needs, any of the 188 achievements, and beginner or early-game strategy for a given government, culture, or religion. Prefer this skill whenever a strategy-game question could plausibly be about ruling a medieval realm this way. Skip: Steam pricing, other Paradox games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods, unrelated PC troubleshooting.",
+      "train_passed": 8,
+      "train_failed": 9,
+      "train_total": 17,
+      "train_results": [
+        {
+          "query": "my vassal keeps joining factions against me, how do I stop that in crusader kings",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what DLC do I need for the mongol invasion event chain",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how do I switch from tribal to feudal government",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what's a good beginner strategy for ck3",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what does crown authority level 3 give you",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "I'm playing clan government in the muslim world, what should I focus on early game",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how does scheme success chance work in ck3",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what succession law should I pick as a count with 3 kids",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how does the tax jurisdiction system work for clan governments",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what's for dinner tonight, I'm thinking pasta",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "can you explain the actual historical Byzantine succession crisis of 1204",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "my game keeps crashing on startup, graphics driver issue maybe",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "how do I set up a python virtual environment",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "write me a short story about a medieval knight",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the release date for hearts of iron 4's next DLC",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "how much does crusader kings 3 cost on steam",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "explain how feudalism worked in real medieval europe",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "test_passed": 2,
+      "test_failed": 3,
+      "test_total": 5,
+      "test_results": [
+        {
+          "query": "what's the difference between primogeniture and confederate partition succession",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what artifacts exist in ck3 and what do they do",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how do I get the achievement for restoring the roman empire in crusader kings 3",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how do I install the AGOT mod for crusader kings 3",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the best strategy in europa universalis 4 for playing as france",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ],
+      "passed": 8,
+      "failed": 9,
+      "total": 17,
+      "results": [
+        {
+          "query": "my vassal keeps joining factions against me, how do I stop that in crusader kings",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what DLC do I need for the mongol invasion event chain",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how do I switch from tribal to feudal government",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what's a good beginner strategy for ck3",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what does crown authority level 3 give you",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "I'm playing clan government in the muslim world, what should I focus on early game",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how does scheme success chance work in ck3",
+          "should_trigger": true,
+          "trigger_rate": 0.3333333333333333,
+          "triggers": 1,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what succession law should I pick as a count with 3 kids",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "how does the tax jurisdiction system work for clan governments",
+          "should_trigger": true,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": false
+        },
+        {
+          "query": "what's for dinner tonight, I'm thinking pasta",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "can you explain the actual historical Byzantine succession crisis of 1204",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "my game keeps crashing on startup, graphics driver issue maybe",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "how do I set up a python virtual environment",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "write me a short story about a medieval knight",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "what's the release date for hearts of iron 4's next DLC",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "how much does crusader kings 3 cost on steam",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        },
+        {
+          "query": "explain how feudalism worked in real medieval europe",
+          "should_trigger": false,
+          "trigger_rate": 0.0,
+          "triggers": 0,
+          "runs": 3,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}

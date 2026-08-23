@@ -78,29 +78,26 @@ of it requires `Workflow` itself to have been invoked yet.
 
 ## Next planned step
 
-All 12 categories now have real content, and both follow-up items from the previous round are
-done — see the 2026-08-23 round-3 log entry below (`faq.md` re-pass, Artifacts reference list).
-Corpus is now 95 files. What's left:
+**Skill is packaged and shipped-ready** as of the 2026-08-23 "skill packaging" log entry below —
+`skill/ck3-companion.skill` exists, validated, description-optimized. Nothing blocking remains.
+Small optional polish items, none urgent:
 
-1. **Verify `09-achievements` (done, see round 3 log)** — confirmed solid: 188 unique achievements
-   across 10 files matching the wiki's own stated total, zero duplicates, all links resolve.
-2. **Decide the 06-into-02 taxonomy fold-in for real** (update `HANDOFF.md` §4) — still only a
-   flagged note in `_tooling/workitems/README.md`, never formally applied.
-3. **`01-character-mechanics/artifacts.md` has several placeholder sections now backfilled
-   elsewhere** — Talismans, Paizas, Cranial trophies, Dynasty banners, Mummification, and
-   Improving-artifacts all got their real tables written into the new
-   `11-reference/artifacts-list.md` instead (the mechanics file's own placeholder text technically
-   still says "not covered on the wiki" for some of these — worth a small follow-up pass to update
-   those placeholders to point at the new reference file, not urgent since the data now exists
-   somewhere in the corpus).
-4. Once content is believed complete: move to HANDOFF §7 step 5 — cross-link scan (already covered
-   by `check_corpus.py`), `README.md`/`INDEX.md` with routing hints, copy into
-   `skill/ck3-companion/references/`, eval pass via `skill-creator`, description-optimization loop,
-   package via `scripts.package_skill`.
+1. `01-character-mechanics/artifacts.md`'s placeholder sections (Talismans, Paizas, Cranial
+   trophies, Dynasty banners, Mummification) still say "not covered on the wiki" even though the
+   real data now exists in `11-reference/artifacts-list.md` — could update those placeholders to
+   cross-link instead, but the data isn't missing from the corpus, just not linked from both sides.
+2. If real usage shows the skill's autonomous trigger rate is a practical problem (see the
+   description-optimization results — recall topped out at 15-33% across iterations, matching the
+   HOI4 build's own documented ceiling), the mitigation is telling users to name the skill
+   explicitly, not further description tuning — that's already been tried and has diminishing
+   returns per HANDOFF.md §6.
+3. `04-intrigue-and-diplomacy` (2 files) and `10-strategy` (1 file) remain genuinely thin —
+   confirmed via search that there isn't more real content to add, not an oversight.
 
 `build_workflow_args.py` + `batch-write-category.js` (per-item `dir` overrides supported) and
 plain `Agent`-dispatched single-file rewrite jobs (used for round 3, since Workflow is overkill for
-1-2 files) are both proven patterns now — reuse whichever fits the batch size.
+1-2 files) are both proven patterns now — reuse whichever fits the batch size for any future corpus
+additions (e.g. covering a new DLC after release).
 
 **2026-08-23, later same session**: user gave the go-ahead and asked for 4 parallel Workflow runs.
 Launched via `batch-write-category.js` (Haiku, batchSize 6) on the 4 categories with the most
@@ -319,3 +316,58 @@ tags).
   reference pages — a good example of infrastructure work surfacing a fix that benefits every future
   fetch, automated or hand-written.
 - Nothing committed to git yet this session — pending user confirmation.
+
+### 2026-08-23 — skill packaging
+
+User asked to finish the remaining HANDOFF §7 step 5 items and package the skill. Did, in order:
+
+- Applied the 06-into-02 taxonomy fold-in to `HANDOFF.md` §4 for real (was only a flagged note).
+- Wrote `wiki-crawler/corpus/README.md` (build overview) and `INDEX.md` (per-file topic routing
+  table, ~95 rows across all 11 categories plus a "not here, check X instead" section) — format
+  matched to the `hoi4-claude-skill` sibling's staging-doc conventions (confirmed via recon fork
+  before writing, rather than guessing at the format).
+- Copied all 95 corpus files into `skill/ck3-companion/references/` (byte-identical, `diff`-
+  verified), with a `references/README.md` warning against hand-editing copies.
+- Wrote `skill/ck3-companion/SKILL.md`. One deliberate deviation from the HOI4 pattern: also copied
+  `INDEX.md` into `references/` and had `SKILL.md` point at it, instead of only a directory-level
+  table in `SKILL.md` itself — a per-file routing table is more actionable across 95 files/11
+  categories than a coarser directory table would be.
+- Symlinked `.claude/skills/ck3-companion -> ../../skill/ck3-companion` (relative, matching HOI4).
+- Validated (`skill-creator`'s `quick_validate`) and packaged (`package_skill`) —
+  `skill/ck3-companion.skill`, a ~600 KB zip. **Note for next time**: both scripts must run as `-m
+  scripts.<name>` from inside skill-creator's own plugin directory
+  (`~/.claude/plugins/marketplaces/claude-plugins-official/plugins/skill-creator/skills/skill-creator`),
+  not invoked as a standalone script path — confirmed by reproducing the resulting
+  `ModuleNotFoundError` otherwise.
+- Built a 22-query trigger-eval-set (12 should-trigger, 10 should-not — casual/natural phrasing,
+  several deliberately not saying "CK3" explicitly) and ran `run_loop.py`'s description-
+  optimization loop (5 iterations, `claude-sonnet-5`, 3 runs/query, 25% holdout) in the background.
+
+**The `best_description` pick was wrong again** — this is the second real occurrence of the exact
+failure mode HANDOFF.md §6 already documented from the HOI4 build ("trust the raw-run trend over
+the literal `best_description` field"). The script picked iteration 1 (my original description) as
+best, but the raw numbers show it was the *worst* candidate: 53% train accuracy / 11% recall, tied
+for worst of all 5 iterations. Iteration 2 was the genuine improvement — 55% train accuracy / 15%
+recall (the only iteration to improve on the larger, more stable 51-run training set at all), 53%
+test accuracy / 22% recall, and it kept 100% precision on both. Applied iteration 2's description
+instead. (Iteration 4 had higher test-set recall (33%) but that's a 15-run holdout where a couple
+of query flips swing the number a lot, and it came with a precision drop to 75% — less trustworthy
+as genuine signal than iteration 2's cleaner, larger-sample improvement.)
+
+Applying the new description caused a real bug worth remembering: the chosen text contains
+`"Crusader Kings": crown authority...` — an unquoted YAML scalar with an embedded `": "` gets
+misparsed as a mapping value by YAML. Fixed by wrapping the whole `description:` value in single
+quotes (escaping the one internal literal `'` as `''`). **Any future generated description with an
+embedded `"word": ` pattern needs this same quoting**, not just this one.
+
+Absolute trigger rates stayed low across all 5 iterations (11-33% recall) even after optimization —
+consistent with HANDOFF.md §6's already-documented finding from HOI4 that "skill autonomous-
+triggering has a real ceiling" for casual, non-explicit phrasing, not something description wording
+alone fully fixes. The practical mitigation is unchanged: users can name the skill explicitly
+("use the ck3-companion skill...") to bypass the autonomous judgment. Full results:
+`skill/ck3-companion-workspace/2026-08-23_100053/results.json` and `report.html`,
+`description-optimization.log` for the readable iteration-by-iteration trace.
+
+Corpus/skill status: 95 files, packaged `.skill` file ready. All 12 planned categories have
+content. Remaining open items: none blocking — see "Next planned step" section above for the
+smaller polish items (artifacts.md placeholder cross-links, etc.) that don't block shipping.

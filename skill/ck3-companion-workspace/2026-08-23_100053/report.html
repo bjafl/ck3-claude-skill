@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ck3-companion — Skill Description Optimization</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', Georgia, serif;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            background: #faf9f5;
+            color: #141413;
+        }
+        h1 { font-family: 'Poppins', sans-serif; color: #141413; }
+        .explainer {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #e8e6dc;
+            color: #b0aea5;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        .summary {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #e8e6dc;
+        }
+        .summary p { margin: 5px 0; }
+        .best { color: #788c5d; font-weight: bold; }
+        .table-container {
+            overflow-x: auto;
+            width: 100%;
+        }
+        table {
+            border-collapse: collapse;
+            background: white;
+            border: 1px solid #e8e6dc;
+            border-radius: 6px;
+            font-size: 12px;
+            min-width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #e8e6dc;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+        th {
+            font-family: 'Poppins', sans-serif;
+            background: #141413;
+            color: #faf9f5;
+            font-weight: 500;
+        }
+        th.test-col {
+            background: #6a9bcc;
+        }
+        th.query-col { min-width: 200px; }
+        td.description {
+            font-family: monospace;
+            font-size: 11px;
+            word-wrap: break-word;
+            max-width: 400px;
+        }
+        td.result {
+            text-align: center;
+            font-size: 16px;
+            min-width: 40px;
+        }
+        td.test-result {
+            background: #f0f6fc;
+        }
+        .pass { color: #788c5d; }
+        .fail { color: #c44; }
+        .rate {
+            font-size: 9px;
+            color: #b0aea5;
+            display: block;
+        }
+        tr:hover { background: #faf9f5; }
+        .score {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        .score-good { background: #eef2e8; color: #788c5d; }
+        .score-ok { background: #fef3c7; color: #d97706; }
+        .score-bad { background: #fceaea; color: #c44; }
+        .train-label { color: #b0aea5; font-size: 10px; }
+        .test-label { color: #6a9bcc; font-size: 10px; font-weight: bold; }
+        .best-row { background: #f5f8f2; }
+        th.positive-col { border-bottom: 3px solid #788c5d; }
+        th.negative-col { border-bottom: 3px solid #c44; }
+        th.test-col.positive-col { border-bottom: 3px solid #788c5d; }
+        th.test-col.negative-col { border-bottom: 3px solid #c44; }
+        .legend { font-family: 'Poppins', sans-serif; display: flex; gap: 20px; margin-bottom: 10px; font-size: 13px; align-items: center; }
+        .legend-item { display: flex; align-items: center; gap: 6px; }
+        .legend-swatch { width: 16px; height: 16px; border-radius: 3px; display: inline-block; }
+        .swatch-positive { background: #141413; border-bottom: 3px solid #788c5d; }
+        .swatch-negative { background: #141413; border-bottom: 3px solid #c44; }
+        .swatch-test { background: #6a9bcc; }
+        .swatch-train { background: #141413; }
+    </style>
+</head>
+<body>
+    <h1>ck3-companion — Skill Description Optimization</h1>
+    <div class="explainer">
+        <strong>Optimizing your skill's description.</strong> This page updates automatically as Claude tests different versions of your skill's description. Each row is an iteration — a new description attempt. The columns show test queries: green checkmarks mean the skill triggered correctly (or correctly didn't trigger), red crosses mean it got it wrong. The "Train" score shows performance on queries used to improve the description; the "Test" score shows performance on held-out queries the optimizer hasn't seen. When it's done, Claude will apply the best-performing description to your skill.
+    </div>
+
+    <div class="summary">
+        <p><strong>Original:</strong> Companion reference for Crusader Kings III (CK3), Paradox&#x27;s medieval grand strategy game, covering vanilla gameplay at patch 1.19. Use for questions about game mechanics, strategy, or achievements, e.g. &quot;how does scheme success chance work in ck3&quot;, &quot;what succession law should I use as a count&quot;, &quot;how do I get the Roman Empire achievement&quot;, &quot;what does Crown Authority level 3 unlock&quot;, &quot;I&#x27;m playing Clan government, what should I focus on&quot;, &quot;what artifacts exist&quot;, &quot;how do I switch from tribal to feudal&quot;, &quot;difference between primogeniture and confederate partition&quot;. Covers character mechanics, realm/succession, religion/culture, intrigue, warfare, decisions, all 188 achievements by DLC, and reference tables for buildings/artifacts/empires/kingdoms. Skip for Steam pricing, other Paradox/strategy games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods (vanilla-only), or unrelated PC troubleshooting.</p>
+        <p class="best"><strong>Best:</strong> Companion reference for Crusader Kings III (CK3), Paradox&#x27;s medieval grand strategy game, covering vanilla gameplay at patch 1.19. Use for questions about game mechanics, strategy, or achievements, e.g. &quot;how does scheme success chance work in ck3&quot;, &quot;what succession law should I use as a count&quot;, &quot;how do I get the Roman Empire achievement&quot;, &quot;what does Crown Authority level 3 unlock&quot;, &quot;I&#x27;m playing Clan government, what should I focus on&quot;, &quot;what artifacts exist&quot;, &quot;how do I switch from tribal to feudal&quot;, &quot;difference between primogeniture and confederate partition&quot;. Covers character mechanics, realm/succession, religion/culture, intrigue, warfare, decisions, all 188 achievements by DLC, and reference tables for buildings/artifacts/empires/kingdoms. Skip for Steam pricing, other Paradox/strategy games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods (vanilla-only), or unrelated PC troubleshooting.</p>
+        <p><strong>Best Score:</strong> 2/5 (test)</p>
+        <p><strong>Iterations:</strong> 5 | <strong>Train:</strong> 17 | <strong>Test:</strong> 5</p>
+    </div>
+
+    <div class="legend">
+        <span style="font-weight:600">Query columns:</span>
+        <span class="legend-item"><span class="legend-swatch swatch-positive"></span> Should trigger</span>
+        <span class="legend-item"><span class="legend-swatch swatch-negative"></span> Should NOT trigger</span>
+        <span class="legend-item"><span class="legend-swatch swatch-train"></span> Train</span>
+        <span class="legend-item"><span class="legend-swatch swatch-test"></span> Test</span>
+    </div>
+
+    <div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Iter</th>
+                <th>Train</th>
+                <th>Test</th>
+                <th class="query-col">Description</th>
+                <th class="positive-col">what DLC do I need for the mongol invasion event chain</th>
+                <th class="positive-col">my vassal keeps joining factions against me, how do I stop that in crusader kings</th>
+                <th class="positive-col">how do I switch from tribal to feudal government</th>
+                <th class="positive-col">what&#x27;s a good beginner strategy for ck3</th>
+                <th class="positive-col">what does crown authority level 3 give you</th>
+                <th class="positive-col">I&#x27;m playing clan government in the muslim world, what should I focus on early game</th>
+                <th class="positive-col">how does scheme success chance work in ck3</th>
+                <th class="positive-col">what succession law should I pick as a count with 3 kids</th>
+                <th class="positive-col">how does the tax jurisdiction system work for clan governments</th>
+                <th class="negative-col">what&#x27;s for dinner tonight, I&#x27;m thinking pasta</th>
+                <th class="negative-col">can you explain the actual historical Byzantine succession crisis of 1204</th>
+                <th class="negative-col">my game keeps crashing on startup, graphics driver issue maybe</th>
+                <th class="negative-col">write me a short story about a medieval knight</th>
+                <th class="negative-col">how do I set up a python virtual environment</th>
+                <th class="negative-col">what&#x27;s the release date for hearts of iron 4&#x27;s next DLC</th>
+                <th class="negative-col">how much does crusader kings 3 cost on steam</th>
+                <th class="negative-col">explain how feudalism worked in real medieval europe</th>
+                <th class="test-col positive-col">what&#x27;s the difference between primogeniture and confederate partition succession</th>
+                <th class="test-col positive-col">what artifacts exist in ck3 and what do they do</th>
+                <th class="test-col positive-col">how do I get the achievement for restoring the roman empire in crusader kings 3</th>
+                <th class="test-col negative-col">how do I install the AGOT mod for crusader kings 3</th>
+                <th class="test-col negative-col">what&#x27;s the best strategy in europa universalis 4 for playing as france</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="best-row">
+                <td>1</td>
+                <td><span class="score score-ok">27/51</span></td>
+                <td><span class="score score-bad">7/15</span></td>
+                <td class="description">Companion reference for Crusader Kings III (CK3), Paradox&#x27;s medieval grand strategy game, covering vanilla gameplay at patch 1.19. Use for questions about game mechanics, strategy, or achievements, e.g. &quot;how does scheme success chance work in ck3&quot;, &quot;what succession law should I use as a count&quot;, &quot;how do I get the Roman Empire achievement&quot;, &quot;what does Crown Authority level 3 unlock&quot;, &quot;I&#x27;m playing Clan government, what should I focus on&quot;, &quot;what artifacts exist&quot;, &quot;how do I switch from tribal to feudal&quot;, &quot;difference between primogeniture and confederate partition&quot;. Covers character mechanics, realm/succession, religion/culture, intrigue, warfare, decisions, all 188 achievements by DLC, and reference tables for buildings/artifacts/empires/kingdoms. Skip for Steam pricing, other Paradox/strategy games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods (vanilla-only), or unrelated PC troubleshooting.</td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+            </tr>
+            <tr class="">
+                <td>2</td>
+                <td><span class="score score-ok">28/51</span></td>
+                <td><span class="score score-ok">8/15</span></td>
+                <td class="description">Answer Crusader Kings III (CK3) gameplay questions grounded in a patch-1.19 vanilla reference, not general knowledge. Trigger on CK3 terminology even when the user doesn&#x27;t say &quot;CK3&quot; or &quot;Crusader Kings&quot;: crown authority, vassals and factions, succession laws (primogeniture, gavelkind, confederate partition), government types (feudal, tribal, clan, theocracy) and converting between them, schemes and intrigue, councils, religion, faith, doctrine, tenets, culture, traditions, warfare, casus belli, decisions, artifacts, dynasties, DLC content, and any of the 188 achievements. Also covers &quot;what should I focus on&quot; strategy questions for a given government, culture, or religion, and beginner strategy. Ground exact numbers, requirements, and mechanics in bundled data rather than guessing. Skip: Steam pricing, other Paradox games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods, unrelated PC troubleshooting.</td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+            </tr>
+            <tr class="">
+                <td>3</td>
+                <td><span class="score score-ok">27/51</span></td>
+                <td><span class="score score-bad">6/15</span></td>
+                <td class="description">Answer questions about playing Crusader Kings III (CK3), Paradox&#x27;s medieval strategy game — even when the user never says &quot;CK3&quot; and just describes their in-game situation. Triggers on: crown authority, vassals/factions, succession laws (primogeniture, gavelkind, confederate partition, elective), government types and converting between them (tribal to feudal, clan tax jurisdiction), scheme/intrigue success chance, councils, faith/doctrine/tenets, culture/traditions, warfare/casus belli, decisions, artifacts, dynasties, which DLC a feature or event chain requires, any of the 188 achievements, and &quot;what should I focus on&quot;/best-strategy or beginner-strategy questions for a given government, culture, or religion. Exact numbers and mechanics for this niche game are easy to misremember — ground answers in bundled patch-1.19 reference data rather than guessing. Skip: Steam pricing, other Paradox games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods, unrelated PC troubleshooting.</td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">1/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+            </tr>
+            <tr class="">
+                <td>4</td>
+                <td><span class="score score-ok">27/51</span></td>
+                <td><span class="score score-ok">8/15</span></td>
+                <td class="description">Companion reference for Crusader Kings III (CK3), Paradox&#x27;s medieval grand strategy game, patch 1.19. Use for in-game questions even if the user never says &quot;CK3&quot; — e.g. &quot;how does scheme success chance work&quot;, &quot;what succession law for a count with several kids&quot;, &quot;how do I get the Roman Empire achievement&quot;, &quot;what does Crown Authority level 3 unlock&quot;, &quot;playing Clan government in the Muslim world, what should I focus on&quot;, &quot;how do I switch from tribal to feudal&quot;, &quot;how does tax jurisdiction work for clan&quot;, &quot;my vassals keep joining factions against me&quot;, &quot;what DLC do I need for the Mongol invasion event chain&quot;, &quot;good beginner strategy for ck3&quot;. Covers character mechanics, realm/succession, religion/culture, intrigue, warfare, decisions, all 188 achievements by DLC, and reference tables for buildings/artifacts/empires/kingdoms. Skip for Steam pricing, other Paradox games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods, unrelated PC troubleshooting.</td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">1/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+            </tr>
+            <tr class="">
+                <td>5</td>
+                <td><span class="score score-ok">27/51</span></td>
+                <td><span class="score score-bad">7/15</span></td>
+                <td class="description">Crusader Kings III (CK3) — Paradox&#x27;s medieval dynasty/realm strategy game, patch 1.19. Use for ANY question about playing CK3, even if the user never says &quot;CK3&quot; or &quot;Crusader Kings&quot; and just describes their in-game situation: crown authority, vassals and factions turning against you, succession laws (primogeniture, gavelkind, confederate partition) for an heir or multiple kids, government types (tribal, feudal, clan, theocracy) and converting between them, clan tax jurisdiction, scheme/intrigue success odds, councils, faiths, doctrines, tenets, culture, traditions, warfare, casus belli, decisions, artifacts, dynasties, which DLC an event chain needs, any of the 188 achievements, and beginner or early-game strategy for a given government, culture, or religion. Prefer this skill whenever a strategy-game question could plausibly be about ruling a medieval realm this way. Skip: Steam pricing, other Paradox games (EU4, HOI4, Stellaris, Victoria 3), real medieval history, CK3 mods, unrelated PC troubleshooting.</td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">1/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result fail">✗<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">1/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result fail">✗<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+                <td class="result test-result pass">✓<span class="rate">0/3</span></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+</body>
+</html>
