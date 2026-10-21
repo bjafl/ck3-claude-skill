@@ -97,3 +97,8 @@ attribution and the same license if you redistribute.
 
 Crusader Kings III is a trademark of Paradox Interactive. This project is
 not affiliated with or endorsed by Paradox.
+
+## License
+
+Code is MIT ([LICENSE](LICENSE)); the wiki-derived corpus and skill content
+are CC BY-SA 3.0 ([LICENSE-CONTENT.md](LICENSE-CONTENT.md)).

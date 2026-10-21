@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Playwright-driven fetcher for ck3.paradoxwikis.com, bypassing its Fastly Client Challenge via a real headless browser."
 readme = "README.md"
 authors = [
-    { name = "bjafl", email = "bjarte@dev.flode.net" }
+    { name = "bjafl" }
 ]
 requires-python = ">=3.14"
 dependencies = [
